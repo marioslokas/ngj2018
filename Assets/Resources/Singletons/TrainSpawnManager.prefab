@@ -65,4 +65,5 @@ MonoBehaviour:
   objectsToSpawnFromInit:
   - {fileID: 1749913197955142, guid: be5aa2c9660a3354e9d40b5717ece950, type: 2}
   - {fileID: 1747291830501100, guid: 1720bc5afa3c5474ab10c27ade01a7ad, type: 2}
-  peoplePrefab: {fileID: 0}
+  startPosDirection: {x: -20, y: 1.5, z: -19.36}
+  startNegDirection: {x: 0, y: 0, z: 0}
