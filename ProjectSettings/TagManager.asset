@@ -8,6 +8,9 @@ TagManager:
   - DestroyTrain
   - Person
   - Platform
+  - SlowMusic
+  - FastMusic
+  - Music
   layers:
   - Default
   - TransparentFX
