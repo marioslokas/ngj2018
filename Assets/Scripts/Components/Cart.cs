@@ -13,4 +13,17 @@ public class Cart : MonoBehaviour
     {
         MyShape = myShape;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        PersonBehavior pb;
+
+        if ((pb = collision.collider.GetComponent<PersonBehavior>()) != null)
+        {
+            if (MyShape == Shapes.All || MyShape == pb.MyShape) return;
+
+            //ToDo Panic or run out?
+            Destroy(pb.gameObject);
+        }
+    }
 }
