@@ -5,7 +5,6 @@ public class Train : MonoBehaviour
     [SerializeField]
     private float speed = 10;
 
-    private Rigidbody body;
     private Vector3 direction;
     private bool hasBeenStoopped;
     private bool stopped = false;
@@ -13,11 +12,6 @@ public class Train : MonoBehaviour
     public void Init(Vector3 direction)
     {
         this.direction = direction;
-    }
-
-    private void Start()
-    {
-        body = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -30,11 +24,8 @@ public class Train : MonoBehaviour
         if (!stopped)
         {
             //ToDo movement
-            body.velocity = direction * Time.deltaTime * speed;
-        }
-        else
-        {
-            body.velocity = Vector3.zero;
+            //body.velocity = direction * Time.deltaTime * speed;
+            transform.Translate(direction * Time.deltaTime * speed, Space.Self);
         }
     }
 
