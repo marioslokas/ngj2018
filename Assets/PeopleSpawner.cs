@@ -16,6 +16,8 @@ public class PeopleSpawner : MonoBehaviour {
 
 	private float currentElapsedTime;
 
+	public GameObject explosionPrefab;
+
 	// Use this for initialization
 	void Start () {
 		currentElapsedTime = 0f;
@@ -41,5 +43,10 @@ public class PeopleSpawner : MonoBehaviour {
 
 		return spawnPoints [randomPoint];
 
+	}
+
+	void OnDestroy()
+	{
+		Instantiate (explosionPrefab, this.transform.position, this.transform.rotation);
 	}
 }

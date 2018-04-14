@@ -29,11 +29,11 @@ public class Cart : MonoBehaviour
 				return;
 			}
 
-			GameObject spawnPoint = GameObject.FindGameObjectWithTag ("PeopleSpawnPoint");
-			pb.GetComponent<NavMeshAgent> ().Warp (spawnPoint.transform.position);
+//			GameObject spawnPoint = GameObject.FindGameObjectWithTag ("PeopleSpawnPoint");
+//			pb.GetComponent<NavMeshAgent> ().Warp (spawnPoint.transform.position);
 			Debug.Log ("DIDN'T FIT");
             //ToDo Panic or run out?
-//            Destroy(pb.gameObject);
+            Destroy(pb.gameObject);
         }
     }
 }
