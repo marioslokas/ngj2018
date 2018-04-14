@@ -1,45 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class PeopleSpawner : MonoBehaviour {
+public class PeopleSpawner : MonoBehaviour
+{
+    public GameObject[] spawnPoints;
 
-	public GameObject[] spawnPoints;
+    public float spawningInterval = 10f;
 
-	public float spawningInterval = 10f;
+    public bool canSpawn = true;
 
-	public bool canSpawn = true;
+    public PersonBehavior[] personPrefabs;
 
-	public GameObject personPrefab;
+    private GameObject spawningPoint;
 
-	private GameObject spawningPoint;
+    private float currentElapsedTime;
 
-	private float currentElapsedTime;
+    // Use this for initialization
+    private void Start()
+    {
+        currentElapsedTime = 0f;
+    }
 
-	// Use this for initialization
-	void Start () {
-		currentElapsedTime = 0f;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		currentElapsedTime += Time.deltaTime;
-		if (currentElapsedTime > spawningInterval && canSpawn) {
+    // Update is called once per frame
+    private void Update()
+    {
+        currentElapsedTime += Time.deltaTime;
+        if (currentElapsedTime > spawningInterval && canSpawn)
+        {
+            GameObject spawnPoint = PickSpawnPoint();
 
-			GameObject spawnPoint = PickSpawnPoint ();
+            PersonBehavior personPrefab = null;
 
-			GameObject newSphere = Instantiate (personPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+            var shape = (Shapes)Random.Range(2, 5);
 
-			currentElapsedTime = 0f;
-		}
-	}
+            for (int i = 0; i < personPrefabs.Length; i++)
+            {
+                if (personPrefabs[i].MyShape == shape)
+                {
+                    personPrefab = personPrefabs[i];
+                }
+            }
 
-	GameObject PickSpawnPoint()
-	{
-		int spawnPointsNumber = spawnPoints.Length;
-		int randomPoint = UnityEngine.Random.Range (0, spawnPointsNumber);
+            var newSphere = Instantiate(personPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            currentElapsedTime = 0f;
+        }
+    }
 
-		return spawnPoints [randomPoint];
+    private GameObject PickSpawnPoint()
+    {
+        int spawnPointsNumber = spawnPoints.Length;
+        int randomPoint = UnityEngine.Random.Range(0, spawnPointsNumber);
 
-	}
+        return spawnPoints[randomPoint];
+    }
 }
