@@ -16,9 +16,10 @@ public class Train : MonoBehaviour
 
     private void Update()
     {
-        if (TrainSpawnManager.Instance.BetweenTrainsTimer <= 0)
+        if (TrainSpawnManager.Instance.TrainHoldingTimer <= 0)
         {
             stopped = false;
+            TrainSpawnManager.Instance.StartedHolding = false;
         }
 
         if (!stopped)
@@ -35,6 +36,7 @@ public class Train : MonoBehaviour
         {
             stopped = true;
             hasBeenStoopped = true;
+            TrainSpawnManager.Instance.StartedHolding = true;
         }
         else if (hasBeenStoopped && other.gameObject.tag == "DestroyTrain")
         {

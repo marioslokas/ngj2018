@@ -1,5 +1,6 @@
 ﻿using UnityEngine.AI;
 using UnityEngine;
+using System.Collections;
 
 public class PersonBehavior : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PersonBehavior : MonoBehaviour
 		
 	private float currentTime = 0f;
 
+	private Quaternion rotationUp;
+
 	[Header("Wiggling parameters")]
 	public AnimationCurve curve;
 	public Vector3 distance;
@@ -26,6 +29,10 @@ public class PersonBehavior : MonoBehaviour
 
 	private Vector3 startPos, toPos;
 	private float timeStart;
+
+	private float layDownTime = 2f;
+
+	private bool standingUp;
 
 
     private void Awake()
@@ -41,6 +48,8 @@ public class PersonBehavior : MonoBehaviour
 		startPos = transform.position;
 		randomToPos();
 		isOnPlatform = true;
+
+		rotationUp = new Quaternion (0, 1, 0, 0);
 	}
 	
 	// Update is called once per frame
@@ -61,8 +70,32 @@ public class PersonBehavior : MonoBehaviour
 				currentTime = 0f;
 			}
 		}
-			
-		
+
+		CheckForFall ();
+	}
+
+	void CheckForFall()
+	{
+		if (Vector3.Angle (this.transform.up, Vector3.up) > 70) {
+			if (!standingUp) {
+				StartCoroutine (StandBackUp ());
+				standingUp = true;
+			}
+		}
+	}
+
+	IEnumerator StandBackUp()
+	{
+		yield return new WaitForSeconds (layDownTime);
+		Debug.Log ("STANDING UP");
+		float t = 0f;
+
+		while (t < 1f) {
+			t += Time.deltaTime;
+			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, rotationUp, t);
+			yield return null;
+		}
+		standingUp = false;
 	}
 
 	void Wiggle()
