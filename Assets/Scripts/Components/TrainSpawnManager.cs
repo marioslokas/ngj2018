@@ -8,6 +8,9 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private float timeBetweenTrains;
 
     [SerializeField]
+    private float trainHoldingTime;
+
+    [SerializeField]
     private Cart cartPrefab;
 
     [SerializeField]
@@ -29,17 +32,21 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private Vector3 startNegDirection;
 
     private Text textTimerRef;
-    private string basisTimerText;
+    private string timeforDeparture;
+    private string timeForArrivals = "Time for arrivals: ";
 
+    internal bool StartedHolding;
+    internal float TrainHoldingTimer;
     internal float BetweenTrainsTimer;
 
     public void Init()
     {
         BetweenTrainsTimer = timeBetweenTrains;
+        TrainHoldingTimer = trainHoldingTime;
 
         Instantiate(eventSystemPrefab);
         textTimerRef = Instantiate(canvasForUIPrefab).TimerText;
-        basisTimerText = textTimerRef.text;
+        timeforDeparture = textTimerRef.text;
         SpawnTrain(1, startPosDirection);
         SpawnTrain(-1, startNegDirection);
 
@@ -65,7 +72,15 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     {
         BetweenTrainsTimer -= Time.deltaTime;
 
-        textTimerRef.text = basisTimerText + (int)BetweenTrainsTimer;
+        if (StartedHolding)
+        {
+            TrainHoldingTimer -= Time.deltaTime;
+            textTimerRef.text = timeforDeparture + (int)TrainHoldingTimer;
+        }
+        else
+        {
+            textTimerRef.text = timeForArrivals + (int)BetweenTrainsTimer;
+        }
     }
 
     private void LateUpdate()
@@ -75,6 +90,11 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
             SpawnTrain(1, startPosDirection);
             SpawnTrain(-1, startNegDirection);
             BetweenTrainsTimer = timeBetweenTrains;
+        }
+
+        if (TrainHoldingTimer <= 0)
+        {
+            TrainHoldingTimer = trainHoldingTime;
         }
     }
 }
