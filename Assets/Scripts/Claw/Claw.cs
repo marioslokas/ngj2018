@@ -3,19 +3,21 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Claw : MonoBehaviour
 {
-    public Rigidbody m_ClawBody;
-    private Camera m_Camera;
-
-    private Vector3 m_ClawVeloctiy = Vector3.zero;
+    public Rigidbody ClawBody;
 
     public float Speed = 12f;
     public float Drag = 0.97f;
+    public float CameraDistance = 15f;
+    public float CameraSpeed = 4f;
 
     public Rect ClawZone = Rect.zero;
 
+    private Vector3 m_ClawVeloctiy = Vector3.zero;
+    private Camera m_Camera;
+
     private void Awake()
     {
-        Debug.Assert(m_ClawBody != null, "Claw behavior is missing its rigidbody", this);
+        Debug.Assert(ClawBody != null, "Claw behavior is missing its rigidbody", this);
         m_Camera = Camera.main;
     }
 
@@ -26,13 +28,14 @@ public class Claw : MonoBehaviour
 
     private void Update()
     {
+        // TEMP debug code:
         if (Input.GetKeyDown(KeyCode.C))
         {
             Cursor.lockState = (CursorLockMode)(((int)++Cursor.lockState) % 2);
         }
 
-        //DoDetection();
         DoMove();
+        DoCameraFollow();
     }
 
     private void DoMove()
@@ -43,24 +46,21 @@ public class Claw : MonoBehaviour
         m_ClawVeloctiy = new Vector3(m_ClawVeloctiy.x + x * Speed * Time.deltaTime, 0, 
                                      m_ClawVeloctiy.z + y * Speed * Time.deltaTime);
 
-        m_ClawBody.velocity = m_ClawVeloctiy;
+        ClawBody.velocity = m_ClawVeloctiy;
         m_ClawVeloctiy = m_ClawVeloctiy * Drag;
 
-        transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, ClawZone.xMin, ClawZone.xMax), transform.localPosition.y,
+        transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, ClawZone.xMin, ClawZone.xMax),
+                                              transform.localPosition.y,
                                               Mathf.Clamp(transform.localPosition.z, ClawZone.yMin, ClawZone.yMax));
     }
 
-#if false
-    private void DoDetection()
+    private void DoCameraFollow()
     {
-        Ray cameraRay = m_Camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit info;
-        if (!Physics.Raycast(cameraRay, out info, 100))
-        {
-            return;
-        }
+        Vector3 desiredCameraPos = m_Camera.transform.forward * -CameraDistance + ClawBody.position;
+        m_Camera.transform.localPosition = Vector3.Lerp(
+            m_Camera.transform.localPosition, desiredCameraPos,
+            Time.deltaTime * CameraSpeed);
     }
-#endif
 
     private void OnDrawGizmosSelected()
     {

@@ -311,9 +311,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c6b45c7eedc9364ea9abd0b2c24078a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ClawBody: {fileID: 871704471}
+  ClawBody: {fileID: 871704471}
   Speed: 12
   Drag: 0.97
+  CameraDistance: 15
+  CameraSpeed: 4
   ClawZone:
     serializedVersion: 2
     x: -14.01
