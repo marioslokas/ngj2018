@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PersonBehavior : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
     public GameObject platform;
 
     private bool isOnPlatform;
-    public bool isOnCrane;
+    [HideInInspector] public bool isOnCrane;
     private bool isOnTrain;
-	public bool hasBeenGrabbed;
+    [HideInInspector] public bool hasBeenGrabbed;
 
 	public float walkRadius = 10f;
 

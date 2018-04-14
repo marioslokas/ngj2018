@@ -14,12 +14,8 @@ public class ClawObject : MonoBehaviour
 
     private float m_DesiredHeight = 0;
 
-	private List<GameObject> caughtPeople;
-
-	void Start()
-	{
-		caughtPeople = new List<GameObject> ();
-	}
+    private List<GameObject> caughtPeople = new List<GameObject>();
+    private List<GameObject> caughtOther = new List<GameObject>();
 
     private void Awake()
     {
@@ -66,21 +62,36 @@ public class ClawObject : MonoBehaviour
 		Collider[] peopleHit = Physics.OverlapSphere (this.transform.position, grabbingRange);
 
 		for (int i = 0; i < peopleHit.Length; i++) {
-			if (peopleHit [i].gameObject.tag.Equals("Person")) {
+			if (peopleHit [i].gameObject.CompareTag("Person")) {
 				AttachPersonToCrane (peopleHit [i]);
+            }
+            else if (peopleHit[i].gameObject.CompareTag("TrainRoof"))
+            {
+                caughtOther.Add(peopleHit[i].gameObject);
+
+                Rigidbody body = peopleHit[i].GetComponent<Rigidbody>();
+                body.isKinematic = true;
+                body.useGravity = false;
             }
 		}
     }
 
 	void AttachPersonToCrane(Collider person)
-	{
-		person.GetComponent<PersonBehavior> ().isOnCrane = true;
-		person.GetComponent<PersonBehavior> ().hasBeenGrabbed = true;
-		person.transform.SetParent (this.transform);
-		person.GetComponent<Rigidbody> ().isKinematic = true;
-		person.GetComponent<Rigidbody> ().useGravity = false;
-		person.GetComponent<NavMeshAgent> ().enabled = false;
-		caughtPeople.Add (person.transform.gameObject);
+    {
+        person.transform.SetParent(this.transform);
+
+        person.transform.position = Vector3.MoveTowards(person.transform.position, transform.position, 0.3f);
+
+        PersonBehavior pb = person.GetComponent<PersonBehavior>();
+        pb.isOnCrane = true;
+		pb.hasBeenGrabbed = true;
+        pb.agent.enabled = false;
+
+        Rigidbody body = person.GetComponent<Rigidbody>();
+        body.isKinematic = true;
+		body.useGravity = false;
+
+		caughtPeople.Add(person.transform.gameObject);
 	}
 
 
@@ -91,12 +102,26 @@ public class ClawObject : MonoBehaviour
             var go = caughtPeople[i];
             go.GetComponent<PersonBehavior>().isOnCrane = false;
             go.transform.SetParent(null);
+
             var body = go.GetComponent<Rigidbody>();
             body.isKinematic = false;
             body.useGravity = true;
             body.velocity = ClawBody.velocity * 1.1f;
         }
         caughtPeople.Clear();
+
+
+        for (int i = caughtOther.Count - 1; i >= 0; i--)
+        {
+            var go = caughtPeople[i];
+            go.transform.SetParent(null);
+
+            var body = go.GetComponent<Rigidbody>();
+            body.isKinematic = false;
+            body.useGravity = true;
+            body.velocity = ClawBody.velocity * 1.05f;
+        }
+        caughtOther.Clear();
     }
 
     private void OnDrawGizmos()
