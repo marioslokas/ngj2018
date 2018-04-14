@@ -7,9 +7,18 @@ public class RoofExplosion : MonoBehaviour
     [SerializeField]
     private GameObject explosionPrefab;
 
+    private bool m_IsQuitting = false;
+
+    private void OnApplicationQuit()
+    {
+        m_IsQuitting = true;
+    }
+
     private void OnDestroy()
     {
-        var exp = Instantiate(explosionPrefab);
-        exp.transform.position = transform.position;
+        if (!m_IsQuitting)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
     }
 }

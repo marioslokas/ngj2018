@@ -15,7 +15,6 @@ public class PersonBehavior : MonoBehaviour
     public float walkRadius = 10f;
 
     public Shapes MyShape;
-    public GameObject explosionPefab;
     public float walkFrequency = 6f;
 
     private float currentTime = 0f;
@@ -162,11 +161,5 @@ public class PersonBehavior : MonoBehaviour
         agent.SetDestination(finalPosition);
 
         agent.isStopped = false;
-    }
-
-    private void OnDestroy()
-    {
-        var exp = Instantiate(explosionPefab);
-        exp.transform.position = transform.position;
     }
 }

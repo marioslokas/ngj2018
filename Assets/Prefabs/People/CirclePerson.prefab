@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 54977122939876066}
   - component: {fileID: 195613688685096982}
   - component: {fileID: 136788332361624920}
+  - component: {fileID: 114372482535998056}
   m_Layer: 8
   m_Name: CirclePerson
   m_TagString: Person
@@ -102,6 +103,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114372482535998056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690288863369478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ae47cab187faf449eb7a59093f84dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
+    type: 2}
 --- !u!114 &114396491725988774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,8 +133,6 @@ MonoBehaviour:
   hasBeenGrabbed: 0
   walkRadius: 10
   MyShape: 4
-  explosionPefab: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
-    type: 2}
   walkFrequency: 3
   curve:
     serializedVersion: 2
