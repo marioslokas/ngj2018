@@ -13,6 +13,7 @@ TagManager:
   - Music
   - TrainRoof
   - PeopleSpawnPoint
+  - CanDestroy
   layers:
   - Default
   - TransparentFX
