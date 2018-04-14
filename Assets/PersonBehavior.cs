@@ -7,8 +7,9 @@ public class PersonBehavior : MonoBehaviour
     public GameObject platform;
 
     private bool isOnPlatform;
-    private bool isOnCrane;
+    public bool isOnCrane;
     private bool isOnTrain;
+	public bool hasBeenGrabbed;
 
 	public float walkRadius = 10f;
 
@@ -44,6 +45,10 @@ public class PersonBehavior : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if (isOnCrane || isOnTrain || hasBeenGrabbed) {
+			return;
+		}
 
 		if (agent.pathPending) {
 			return;

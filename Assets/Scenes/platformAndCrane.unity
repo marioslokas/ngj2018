@@ -552,6 +552,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28582b01389b4d2419fcc03e59f0c63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 1727879941}
   IsGrabbing: 0
   TempHasPeople: 0
+  grabbingRange: 5
