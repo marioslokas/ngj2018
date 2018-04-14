@@ -27,6 +27,7 @@ public class PersonBehavior : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         agent = this.GetComponent<NavMeshAgent>();
+		agent.Warp (this.transform.position);
 	}
 	
 	// Update is called once per frame

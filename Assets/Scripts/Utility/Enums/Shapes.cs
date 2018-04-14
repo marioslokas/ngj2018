@@ -1,12 +1,11 @@
-﻿
-using System;
+﻿using System;
 
 [Flags]
 public enum Shapes
 {
-    None        = 0,
-    All         = Square | Triangle | Circle,
-    Square      = 1,
-    Triangle    = 1 << 1,
-    Circle      = 1 << 2
+    None = 0,
+    All = 1,
+    Square = 2,
+    Triangle = 3,
+    Circle = 4
 }
