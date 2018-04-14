@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenValidated: 0
-  timeBetweenTrains: 60
+  timeBetweenTrains: 10
   timeBetweenWavesOfPeople: 15
   cartPrefab: {fileID: 114058917856402288, guid: 0edff70e8d6e9c140b70f7aa7a73fce8,
     type: 2}
