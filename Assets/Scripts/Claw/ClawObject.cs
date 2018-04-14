@@ -107,7 +107,7 @@ public class ClawObject : MonoBehaviour
             var body = go.GetComponent<Rigidbody>();
             body.isKinematic = false;
             body.useGravity = true;
-            body.velocity = ClawBody.velocity * 1.1f;
+            body.velocity = ClawBody.velocity * 0.8f;
         }
         caughtPeople.Clear();
 
@@ -120,7 +120,7 @@ public class ClawObject : MonoBehaviour
             var body = go.GetComponent<Rigidbody>();
             body.isKinematic = false;
             body.useGravity = true;
-            body.velocity = ClawBody.velocity * 1.05f;
+            body.velocity = ClawBody.velocity * 1.15f;
         }
         caughtOther.Clear();
     }
