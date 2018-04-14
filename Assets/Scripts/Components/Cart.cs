@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class Cart : MonoBehaviour
 {
+    public Animator LeftDoor;
+    public Animator RightDoor;
+
     [SerializeField]
     internal float CartLength = 1;
 

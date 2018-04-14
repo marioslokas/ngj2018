@@ -8,6 +8,7 @@ public class Train : MonoBehaviour
     private Vector3 direction;
     private bool hasBeenStoopped;
     private bool stopped = false;
+    internal Cart Cart;
 
     public void Init(Vector3 direction)
     {
@@ -16,6 +17,8 @@ public class Train : MonoBehaviour
 
     private void Update()
     {
+        Cart.SetDoors(stopped);
+
         if (TrainSpawnManager.Instance.TrainHoldingTimer <= 0)
         {
             stopped = false;
@@ -32,13 +35,14 @@ public class Train : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasBeenStoopped && other.gameObject.tag == "StopSign")
+        if (!hasBeenStoopped && other.CompareTag("StopSign"))
         {
             stopped = true;
             hasBeenStoopped = true;
             TrainSpawnManager.Instance.StartedHolding = true;
         }
-        else if (hasBeenStoopped && other.gameObject.tag == "DestroyTrain")
+        // TODO: ensure we destroy at some point.
+        else if (hasBeenStoopped && other.CompareTag("DestroyTrain"))
         {
             Destroy(gameObject);
         }
