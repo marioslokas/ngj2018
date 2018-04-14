@@ -68,7 +68,13 @@ ModelImporter:
     7400068: Train_Door_Left|Train_Body.003Action.002
     7400070: Train_Door_Left|Train_Body.003Action.003
     9500000: //RootNode
-  externalObjects: {}
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Train_Body
+    second: {fileID: 2100000, guid: 99eab9237c9ee954b87ddb408617eadc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -123,7 +129,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

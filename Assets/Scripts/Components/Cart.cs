@@ -5,9 +5,6 @@ using UnityEngine.AI;
 
 public class Cart : MonoBehaviour
 {
-    public Animator LeftDoor;
-    public Animator RightDoor;
-
     [SerializeField]
     internal float CartLength = 1;
 
@@ -16,11 +13,6 @@ public class Cart : MonoBehaviour
 	[SerializeField]
 	private GameObject spawnPoint;
 
-    public void SetDoors(bool isOpen)
-    {
-        LeftDoor.SetBool("IsOpen", isOpen);
-        RightDoor.SetBool("IsOpen", isOpen);
-    }
 
     private void Start()
 	{
