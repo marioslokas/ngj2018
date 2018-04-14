@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 195204446587523520}
   - component: {fileID: 136519187778591104}
   m_Layer: 8
-  m_Name: Person
+  m_Name: SquarePerson
   m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   isOnCrane: 0
   hasBeenGrabbed: 0
   walkRadius: 10
+  MyShape: 2
   walkFrequency: 3
   curve:
     serializedVersion: 2
