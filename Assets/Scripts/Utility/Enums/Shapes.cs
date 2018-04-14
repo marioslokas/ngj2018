@@ -1,6 +1,7 @@
 ﻿public enum Shapes
 {
-    Square = 0,
-    Triangle = 1,
-    Circle = 2
+    All = 0,
+    Square = 1,
+    Triangle = 2,
+    Circle = 3
 }

@@ -25,13 +25,7 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     [SerializeField]
     private GameObject[] objectsToSpawnFromInit;
 
-    //ToDo setup reference to people prefab
-    [SerializeField]
-    private GameObject peoplePrefab;
-
     private Text textTimerRef;
-    private int minCartCount = 1;
-    private int maxCartCount = 5;
     private string basisTimerText;
     private float betweenWavesOfPeopleTimer;
 
@@ -55,15 +49,27 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
 
     private void SpawnTrain()
     {
+        Shapes oldShape = Shapes.All;
+
         var trainRef = Instantiate(trainParentPrefab);
 
-        int amountOfCarts = UnityEngine.Random.Range(minCartCount, maxCartCount);
-
-        for (int i = 0; i < amountOfCarts; i++)
+        for (int i = 0; i < 3; i++)
         {
             var cartRef = Instantiate(cartPrefab, trainRef);
 
             cartRef.transform.localPosition = Vector3.zero - new Vector3(cartRef.CartLength * i * 1.2f, 0, 0);
+            var currentShape = (Shapes)UnityEngine.Random.Range(0, 4);
+
+            if (oldShape == Shapes.All || oldShape != currentShape)
+            {
+                cartRef.Init(currentShape);
+            }
+            else
+            {
+                cartRef.Init(Shapes.All);
+            }
+
+            oldShape = currentShape;
         }
     }
 
