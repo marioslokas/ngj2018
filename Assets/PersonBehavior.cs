@@ -16,22 +16,17 @@ public class PersonBehavior : MonoBehaviour
     {
         MyShape = (Shapes)Random.Range(1, 4);
 
-        Debug.Log(MyShape);
-    }
-
-    // Use this for initialization
-    private void Start()
-    {
+	// Use this for initialization
+	void Start () {
         agent = this.GetComponent<NavMeshAgent>();
-    }
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	}
 
-    // Update is called once per frame
-    private void Update()
-    {
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
+	void OnCollisionEnter(Collision other)
+	{
         agent.Warp(other.contacts[0].point);
 
         if (other.collider.gameObject.tag.Equals("Platform"))
@@ -64,13 +59,27 @@ public class PersonBehavior : MonoBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        //Random.InitState(System.DateTime.Now.Millisecond);
+		Bounds b = thisRenderer.bounds;
 
-        float randomX = Random.Range(platform.transform.position.x - platform.transform.localScale.x / 2,
-                    platform.transform.position.x + platform.transform.localScale.x / 2);
+		float randomX = Random.Range(b.min.x, b.max.x);
 
-        float randomZ = Random.Range(platform.transform.position.y - platform.transform.localScale.z / 2,
-            platform.transform.position.y + platform.transform.localScale.z / 2);
+		float randomZ = Random.Range(b.min.y, b.max.y);
 
         return new Vector3(randomX, 0, randomZ);
     }
+        Debug.Log(MyShape);
+    }
+
+    // Use this for initialization
+    private void Start()
+    {
+        agent = this.GetComponent<NavMeshAgent>();
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
