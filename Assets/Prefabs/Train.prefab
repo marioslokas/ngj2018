@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 4819977582924616}
   - component: {fileID: 33082146708407724}
   - component: {fileID: 23899545233970508}
+  - component: {fileID: 95137233257909704}
   m_Layer: 0
   m_Name: Train_Door_Anim_Left
   m_TagString: Untagged
@@ -183,6 +184,7 @@ GameObject:
   - component: {fileID: 4228072958490750}
   - component: {fileID: 33000362638834774}
   - component: {fileID: 23080619259472904}
+  - component: {fileID: 95095022299752664}
   m_Layer: 0
   m_Name: Train_Door_Anim_Right
   m_TagString: Untagged
@@ -798,6 +800,40 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.04846302, y: 0.0026483666, z: 0.060626}
   m_Center: {x: -0.05314053, y: -0.040300895, z: 0.030312994}
+--- !u!95 &95095022299752664
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1990713832509016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ec3270c026184d24ba592fcded142525, type: 3}
+  m_Controller: {fileID: 9100000, guid: e935e4c630602f345b785b2410eeaa27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95137233257909704
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1599032660894614}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ec3270c026184d24ba592fcded142525, type: 3}
+  m_Controller: {fileID: 9100000, guid: b914d13cc75c0da4a9b4a32033629627, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95481041376127750
 Animator:
   serializedVersion: 3
@@ -826,5 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b65d28f01f70d4f826af69077f01b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftDoor: {fileID: 95137233257909704}
+  RightDoor: {fileID: 95095022299752664}
   CartLength: 1
   spawnPoint: {fileID: 0}

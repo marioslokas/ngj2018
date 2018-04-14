@@ -58,11 +58,14 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
 
     private void SpawnTrain(int xDirection, Vector3 startPosition)
     {
-        var trainRef = Instantiate(trainParentPrefab);
-        trainRef.position = startPosition;
-        trainRef.GetComponent<Train>().Init(new Vector3(xDirection, 0, 0));
+        Transform trainObj = Instantiate(trainParentPrefab);
+        trainObj.position = startPosition;
+        Train train = trainObj.GetComponent<Train>();
+        train.Init(new Vector3(xDirection, 0, 0));
 
-        var cartRef = Instantiate(cartPrefab, trainRef);
+        var cartRef = Instantiate(cartPrefab, trainObj);
+
+        train.Cart = cartRef.GetComponentInChildren<Cart>();
 
         cartRef.transform.localPosition = new Vector3(xDirection * -3.53f, 0, 0);
 //        cartRef.Init((Shapes)UnityEngine.Random.Range(1, 5));
