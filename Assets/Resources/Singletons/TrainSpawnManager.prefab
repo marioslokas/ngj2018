@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4963372180074442}
   - component: {fileID: 114343606780249806}
   m_Layer: 0
-  m_Name: InfoManager
+  m_Name: TrainSpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,3 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenValidated: 0
+  timeBetweenTrains: 20
+  cartPrefab: {fileID: 114058917856402288, guid: 0edff70e8d6e9c140b70f7aa7a73fce8,
+    type: 2}
+  trainParentPrefab: {fileID: 4808302999910728, guid: 1a4483fadc3b2a446b72c996b5d154b0,
+    type: 2}
+  eventSystemPrefab: {fileID: 4360990098714106, guid: 7dfc4ad28b9c8624f8be96bb02e29782,
+    type: 2}
+  canvasForUIPrefab: {fileID: 114273598687250338, guid: 55d273efb813ef94a98b4379ccb4f0a8,
+    type: 2}
+  objectsToSpawnFromInit:
+  - {fileID: 1749913197955142, guid: be5aa2c9660a3354e9d40b5717ece950, type: 2}
+  - {fileID: 1747291830501100, guid: 1720bc5afa3c5474ab10c27ade01a7ad, type: 2}
