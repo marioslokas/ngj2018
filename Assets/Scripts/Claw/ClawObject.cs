@@ -5,15 +5,16 @@ using System.Collections.Generic;
 
 public class ClawObject : MonoBehaviour
 {
+    public Rigidbody ClawBody;
+
     [HideInInspector] public bool IsGrabbing;
-    [HideInInspector] public bool TempHasPeople;
 
 	[SerializeField]
 	private float grabbingRange = 5f;
 
     private float m_DesiredHeight = 0;
 
-	List<GameObject> caughtPeople;
+	private List<GameObject> caughtPeople;
 
 	void Start()
 	{
@@ -42,7 +43,7 @@ public class ClawObject : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0))
         {
-            if (TempHasPeople)
+            if (caughtPeople.Count > 0)
             {
                 ReleasePeople();
             }
@@ -62,19 +63,12 @@ public class ClawObject : MonoBehaviour
 
     public void GatherPeople()
     {
-        Debug.Log("Grabbing people");
-        TempHasPeople = true;
-
 		Collider[] peopleHit = Physics.OverlapSphere (this.transform.position, grabbingRange);
-
-		if (peopleHit.Length !=0) {
-			TempHasPeople = true;
-		}
 
 		for (int i = 0; i < peopleHit.Length; i++) {
 			if (peopleHit [i].gameObject.tag.Equals("Person")) {
 				AttachPersonToCrane (peopleHit [i]);
-			}
+            }
 		}
     }
 
@@ -92,13 +86,28 @@ public class ClawObject : MonoBehaviour
 
     public void ReleasePeople()
     {
-		foreach(GameObject go in caughtPeople)
-		{
-			go.GetComponent<PersonBehavior> ().isOnCrane = false;
-			go.transform.SetParent (null);
-			go.GetComponent<Rigidbody> ().isKinematic = false;
-			go.GetComponent<Rigidbody> ().useGravity = true;
-		}
-		TempHasPeople = false;
+        for (int i = caughtPeople.Count - 1; i >= 0; i--)
+        {
+            var go = caughtPeople[i];
+            go.GetComponent<PersonBehavior>().isOnCrane = false;
+            go.transform.SetParent(null);
+            var body = go.GetComponent<Rigidbody>();
+            body.isKinematic = false;
+            body.useGravity = true;
+            body.velocity = ClawBody.velocity * 1.1f;
+        }
+        caughtPeople.Clear();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawRay(transform.position, Vector3.down * m_DesiredHeight);
+        RaycastHit info;
+        if (!Physics.Raycast(transform.position, Vector3.down, out info, 20))
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(info.point, grabbingRange);
     }
 }
