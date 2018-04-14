@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 268182331}
   m_Layer: 0
   m_Name: Fence
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 427174695}
   m_Layer: 0
   m_Name: Fence (1)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 994040221}
   m_Layer: 0
   m_Name: Fence (2)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 1082023700}
   m_Layer: 0
   m_Name: Fence (3)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -870,6 +870,7 @@ GameObject:
   - component: {fileID: 1968918296}
   - component: {fileID: 1968918295}
   - component: {fileID: 1968918294}
+  - component: {fileID: 1968918297}
   m_Layer: 0
   m_Name: DeadZone
   m_TagString: Platform
@@ -945,3 +946,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1968918292}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1968918297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1968918292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a49846c13ed464797197656211f0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

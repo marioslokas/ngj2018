@@ -6,6 +6,8 @@ TagManager:
   tags:
   - StopSign
   - DestroyTrain
+  - Person
+  - Platform
   layers:
   - Default
   - TransparentFX
