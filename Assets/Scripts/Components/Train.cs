@@ -6,10 +6,16 @@ public class Train : MonoBehaviour
     private float speed = 10;
 
     private Rigidbody body;
+    private Vector3 direction;
     private bool hasBeenStoopped;
     private bool stopped = false;
 
-    private void Awake()
+    public void Init(Vector3 direction)
+    {
+        this.direction = direction;
+    }
+
+    private void Start()
     {
         body = GetComponent<Rigidbody>();
     }
@@ -24,7 +30,7 @@ public class Train : MonoBehaviour
         if (!stopped)
         {
             //ToDo movement
-            body.velocity = new Vector3(1, 0, 0) * Time.deltaTime * speed;
+            body.velocity = direction * Time.deltaTime * speed;
         }
         else
         {
