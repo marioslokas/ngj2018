@@ -17,8 +17,6 @@ public class Train : MonoBehaviour
 
     private void Update()
     {
-        Cart.SetDoors(stopped);
-
         if (TrainSpawnManager.Instance.TrainHoldingTimer <= 0)
         {
             stopped = false;
