@@ -39,7 +39,7 @@ public class ClawObject : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0))
         {
-            if (caughtPeople.Count > 0)
+			if (caughtPeople.Count > 0 || caughtOther.Count > 0)
             {
                 ReleasePeople();
             }
@@ -72,6 +72,7 @@ public class ClawObject : MonoBehaviour
                 Rigidbody body = peopleHit[i].GetComponent<Rigidbody>();
                 body.isKinematic = true;
                 body.useGravity = false;
+				peopleHit [i].transform.SetParent (this.transform);
             }
 		}
     }
@@ -113,7 +114,7 @@ public class ClawObject : MonoBehaviour
 
         for (int i = caughtOther.Count - 1; i >= 0; i--)
         {
-            var go = caughtPeople[i];
+			var go = caughtOther[i];
             go.transform.SetParent(null);
 
             var body = go.GetComponent<Rigidbody>();
