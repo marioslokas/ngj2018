@@ -31,9 +31,9 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
 
     private Text textTimerRef;
     private int minCartCount = 1;
-    private int minPlebCount = 5;
     private int maxCartCount = 5;
-    private int maxPlebCount = 15;
+    private int minPlebCount = 15;
+    private int maxPlebCount = 18;
     private string basisTimerText;
     private float betweenWavesOfPeopleTimer;
 
