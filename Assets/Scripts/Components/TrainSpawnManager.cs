@@ -8,6 +8,9 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private float timeBetweenTrains;
 
     [SerializeField]
+    private float timeBetweenWavesOfPeople;
+
+    [SerializeField]
     private Cart cartPrefab;
 
     [SerializeField]
@@ -23,17 +26,23 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private GameObject[] objectsToSpawnFromInit;
 
     //ToDo setup reference to people prefab
+    [SerializeField]
+    private GameObject peoplePrefab;
 
     private Text textTimerRef;
     private int minCartCount = 1;
+    private int minPlebCount = 5;
     private int maxCartCount = 5;
+    private int maxPlebCount = 15;
     private string basisTimerText;
+    private float betweenWavesOfPeopleTimer;
 
     internal float BetweenTrainsTimer;
 
     public void Init()
     {
         BetweenTrainsTimer = timeBetweenTrains;
+        betweenWavesOfPeopleTimer = timeBetweenWavesOfPeople;
 
         Instantiate(eventSystemPrefab);
         textTimerRef = Instantiate(canvasForUIPrefab).TimerText;
@@ -63,8 +72,25 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private void Update()
     {
         BetweenTrainsTimer -= Time.deltaTime;
+        betweenWavesOfPeopleTimer -= Time.deltaTime;
 
         textTimerRef.text = basisTimerText + (int)BetweenTrainsTimer;
+
+        if (timeBetweenWavesOfPeople <= 0)
+        {
+            betweenWavesOfPeopleTimer = timeBetweenWavesOfPeople;
+
+            //Spawn the wave of people
+
+            int amountOfPeople = UnityEngine.Random.Range(minPlebCount, maxPlebCount);
+
+            for (int i = 0; i < amountOfPeople; i++)
+            {
+                var pleb = Instantiate(peoplePrefab);
+
+                //Set offset on pleb pos
+            }
+        }
     }
 
     private void LateUpdate()
