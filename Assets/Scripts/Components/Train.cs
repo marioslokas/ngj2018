@@ -8,7 +8,6 @@ public class Train : MonoBehaviour
     private Vector3 direction;
     private bool hasBeenStoopped;
     private bool stopped = false;
-    internal Cart Cart;
 
     public void Init(Vector3 direction)
     {
