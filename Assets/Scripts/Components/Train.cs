@@ -32,7 +32,7 @@ public class Train : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasBeenStoopped && other.CompareTag("StopSign"))
+        if (other.CompareTag("StopSign"))
         {
             stopped = true;
             hasBeenStoopped = true;
