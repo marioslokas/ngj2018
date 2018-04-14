@@ -25,6 +25,12 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     [SerializeField]
     private GameObject[] objectsToSpawnFromInit;
 
+    [SerializeField]
+    private Vector3 startPosDirection;
+
+    [SerializeField]
+    private Vector3 startNegDirection;
+
     private Text textTimerRef;
     private string basisTimerText;
     private float betweenWavesOfPeopleTimer;
@@ -39,7 +45,8 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
         Instantiate(eventSystemPrefab);
         textTimerRef = Instantiate(canvasForUIPrefab).TimerText;
         basisTimerText = textTimerRef.text;
-        SpawnTrain();
+        SpawnTrain(1, startPosDirection);
+        SpawnTrain(-1, startNegDirection);
 
         for (int i = 0; i < objectsToSpawnFromInit.Length; i++)
         {
@@ -47,11 +54,13 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
         }
     }
 
-    private void SpawnTrain()
+    private void SpawnTrain(int xDirection, Vector3 startPosition)
     {
         Shapes oldShape = Shapes.All;
 
         var trainRef = Instantiate(trainParentPrefab);
+        trainRef.position = startPosition;
+        trainRef.GetComponent<Train>().Init(new Vector3(xDirection, 0, 0));
 
         for (int i = 0; i < 3; i++)
         {
@@ -84,7 +93,8 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     {
         if (BetweenTrainsTimer <= 0)
         {
-            SpawnTrain();
+            SpawnTrain(1, startPosDirection);
+            SpawnTrain(-1, startNegDirection);
             BetweenTrainsTimer = timeBetweenTrains;
         }
     }
