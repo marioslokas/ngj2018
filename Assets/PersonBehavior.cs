@@ -19,6 +19,8 @@ public class PersonBehavior : MonoBehaviour
 	public float currentTime = 0f;
 
 
+
+
     private void Awake()
 	{
 		MyShape = (Shapes)Random.Range (1, 4);
@@ -34,36 +36,21 @@ public class PersonBehavior : MonoBehaviour
 	void Update () {
 
 		currentTime += Time.deltaTime;
-
-		if (currentTime > walkFrequency) {
-			Walk ();
-			currentTime = 0f;
+		if (!isOnCrane && !isOnTrain) {
+			if (currentTime > walkFrequency) {
+				Walk ();
+				currentTime = 0f;
+			}
 		}
+
 		
 	}
 
-	void OnCollisionEnter(Collision other)
-	{
-//        agent.Warp(other.contacts[0].point);
-//
-//        if (other.collider.gameObject.tag.Equals("Platform"))
-//        {
-//            isOnPlatform = true;
-//            Walk();
-//        }
-//        else if (other.collider.gameObject.tag.Equals("Person"))
-//        {
-//            // Walk();
-//        }
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-//        if (other.collider.gameObject.tag.Equals("Platform"))
-//        {
-//            isOnPlatform = false;
-//        }
-    }
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag.Equals("TrainArea")) {
+			isOnTrain = true;
+		}
+	}
 
     private void Walk()
     {
