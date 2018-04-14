@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasBeenValidated: 0
   timeBetweenTrains: 10
+  trainHoldingTime: 0
   cartPrefab: {fileID: 114204491704548414, guid: 874bef7d4cdafa14cbd9f2025f740cc6,
     type: 2}
   trainParentPrefab: {fileID: 4808302999910728, guid: 1a4483fadc3b2a446b72c996b5d154b0,
@@ -67,4 +68,4 @@ MonoBehaviour:
   - {fileID: 1907003739019026, guid: 23779ad81ae18874f9b8fe95ce5571d8, type: 2}
   - {fileID: 1077351467478502, guid: 6dc9090b2879180448ada8b9749610c5, type: 2}
   startPosDirection: {x: 0.5, y: 0, z: 9.33}
-  startNegDirection: {x: 25.78, y: 0, z: 0.89}
+  startNegDirection: {x: 25.78, y: 0, z: -2}

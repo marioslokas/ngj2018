@@ -128,7 +128,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Time remaining: '
+  m_Text: 'Time for departure: '
 --- !u!222 &222552031711266108
 CanvasRenderer:
   m_ObjectHideFlags: 1
