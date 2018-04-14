@@ -8,9 +8,6 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private float timeBetweenTrains;
 
     [SerializeField]
-    private float timeBetweenWavesOfPeople;
-
-    [SerializeField]
     private Cart cartPrefab;
 
     [SerializeField]
@@ -33,14 +30,12 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
 
     private Text textTimerRef;
     private string basisTimerText;
-    private float betweenWavesOfPeopleTimer;
 
     internal float BetweenTrainsTimer;
 
     public void Init()
     {
         BetweenTrainsTimer = timeBetweenTrains;
-        betweenWavesOfPeopleTimer = timeBetweenWavesOfPeople;
 
         Instantiate(eventSystemPrefab);
         textTimerRef = Instantiate(canvasForUIPrefab).TimerText;
