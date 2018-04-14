@@ -52,10 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenValidated: 0
-  timeBetweenTrains: 20
-  trainHoldingTime: 15
-  cartPrefab: {fileID: 114204491704548414, guid: 874bef7d4cdafa14cbd9f2025f740cc6,
-    type: 2}
+  timeBetweenTrains: 36
+  trainHoldingTime: 20
+  cartPrefab: {fileID: 4795461227802708, guid: 874bef7d4cdafa14cbd9f2025f740cc6, type: 2}
   trainParentPrefab: {fileID: 4808302999910728, guid: 1a4483fadc3b2a446b72c996b5d154b0,
     type: 2}
   eventSystemPrefab: {fileID: 4360990098714106, guid: 7dfc4ad28b9c8624f8be96bb02e29782,

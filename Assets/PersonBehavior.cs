@@ -34,6 +34,8 @@ public class PersonBehavior : MonoBehaviour
 
 	private bool standingUp;
 
+	public GameObject explosionPrefab;
+
 
     private void Awake()
 	{
@@ -54,7 +56,6 @@ public class PersonBehavior : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
 		if (isOnCrane || isOnTrain || hasBeenGrabbed) {
 			return;
 		}
@@ -137,6 +138,11 @@ public class PersonBehavior : MonoBehaviour
 
         agent.isStopped = false;
     }
+
+	void OnDestroy()
+	{
+		Instantiate (explosionPrefab, this.transform.position, this.transform.rotation);
+	}
 		
 
 }

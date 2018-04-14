@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Cart : MonoBehaviour
 {
@@ -9,19 +10,29 @@ public class Cart : MonoBehaviour
 
     internal Shapes MyShape;
 
-    public void Init(Shapes myShape)
-    {
-        MyShape = myShape;
-    }
+	[SerializeField]
+	private GameObject spawnPoint;
 
-    private void OnCollisionEnter(Collision collision)
+	private void Start()
+	{
+		MyShape = (Shapes)UnityEngine.Random.Range (2, 5);
+	}
+
+    private void OnTriggerEnter(Collider other)
     {
         PersonBehavior pb;
 
-        if ((pb = collision.collider.GetComponent<PersonBehavior>()) != null)
+		if ((pb = other.gameObject.GetComponent<PersonBehavior>()) != null)
         {
-            if (MyShape == Shapes.All || MyShape == pb.MyShape) return;
+			if (MyShape == Shapes.All || MyShape == pb.MyShape) {
+				Debug.Log ("PERSON ABOARD");
+                pb.transform.SetParent(this.transform);
+				return;
+			}
 
+//			GameObject spawnPoint = GameObject.FindGameObjectWithTag ("PeopleSpawnPoint");
+//			pb.GetComponent<NavMeshAgent> ().Warp (spawnPoint.transform.position);
+			Debug.Log ("DIDN'T FIT");
             //ToDo Panic or run out?
             Destroy(pb.gameObject);
         }

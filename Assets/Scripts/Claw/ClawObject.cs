@@ -26,11 +26,11 @@ public class ClawObject : MonoBehaviour
     {
         transform.position = Vector3.Lerp(transform.position,
             new Vector3(transform.position.x, m_DesiredHeight, transform.position.z),
-            Time.deltaTime * 2);
+            Time.deltaTime * 3);
 
         if (IsGrabbing)
         {
-            if (Mathf.Abs(transform.position.y - m_DesiredHeight) < 0.1f)
+            if (Mathf.Abs(transform.position.y - m_DesiredHeight) < 0.35f)
             {
                 GatherPeople();
                 m_DesiredHeight = transform.parent.position.y;
@@ -39,7 +39,7 @@ public class ClawObject : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0))
         {
-            if (caughtPeople.Count > 0)
+			if (caughtPeople.Count > 0 || caughtOther.Count > 0)
             {
                 ReleasePeople();
             }
@@ -51,7 +51,7 @@ public class ClawObject : MonoBehaviour
                     return;
                 }
 
-                m_DesiredHeight = transform.position.y - info.distance;
+                m_DesiredHeight = transform.position.y - info.distance + 0.4f;
                 IsGrabbing = true;
             }
         }
@@ -72,6 +72,7 @@ public class ClawObject : MonoBehaviour
                 Rigidbody body = peopleHit[i].GetComponent<Rigidbody>();
                 body.isKinematic = true;
                 body.useGravity = false;
+				peopleHit [i].transform.SetParent (this.transform);
             }
 		}
     }
@@ -113,7 +114,7 @@ public class ClawObject : MonoBehaviour
 
         for (int i = caughtOther.Count - 1; i >= 0; i--)
         {
-            var go = caughtPeople[i];
+			var go = caughtOther[i];
             go.transform.SetParent(null);
 
             var body = go.GetComponent<Rigidbody>();
