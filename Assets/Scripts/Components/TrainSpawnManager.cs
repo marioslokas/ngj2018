@@ -8,9 +8,6 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private float timeBetweenTrains;
 
     [SerializeField]
-    private float timeBetweenWavesOfPeople;
-
-    [SerializeField]
     private Cart cartPrefab;
 
     [SerializeField]
@@ -33,14 +30,12 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
 
     private Text textTimerRef;
     private string basisTimerText;
-    private float betweenWavesOfPeopleTimer;
 
     internal float BetweenTrainsTimer;
 
     public void Init()
     {
         BetweenTrainsTimer = timeBetweenTrains;
-        betweenWavesOfPeopleTimer = timeBetweenWavesOfPeople;
 
         Instantiate(eventSystemPrefab);
         textTimerRef = Instantiate(canvasForUIPrefab).TimerText;
@@ -56,30 +51,14 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
 
     private void SpawnTrain(int xDirection, Vector3 startPosition)
     {
-        Shapes oldShape = Shapes.All;
-
         var trainRef = Instantiate(trainParentPrefab);
         trainRef.position = startPosition;
         trainRef.GetComponent<Train>().Init(new Vector3(xDirection, 0, 0));
 
-        for (int i = 0; i < 3; i++)
-        {
-            var cartRef = Instantiate(cartPrefab, trainRef);
+        var cartRef = Instantiate(cartPrefab, trainRef);
 
-            cartRef.transform.localPosition = Vector3.zero - new Vector3(cartRef.CartLength * i * 1.2f, 0, 0);
-            var currentShape = (Shapes)UnityEngine.Random.Range(1, 5);
-
-            if (oldShape == Shapes.All || oldShape != currentShape)
-            {
-                cartRef.Init(currentShape);
-            }
-            else
-            {
-                cartRef.Init(Shapes.All);
-            }
-
-            oldShape = currentShape;
-        }
+        cartRef.transform.localPosition = new Vector3(xDirection * -3.53f, 0, 0);
+        cartRef.Init((Shapes)UnityEngine.Random.Range(1, 5));
     }
 
     private void Update()
