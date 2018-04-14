@@ -24,22 +24,40 @@ public class MusicPlayer : MonoBehaviour {
 	void Update () {
         if (playFast)
         {
-            TransitionToFast();
+            StartCoroutine(TransitionToFast());
 
         } else if (playSlow)
         {
-            TransitionToSlow();
+            StartCoroutine(TransitionToSlow());
         }
 	}
 
-
-    void TransitionToSlow()
+    IEnumerator TransitionToSlow()
     {
-        fastMusic.volume = Mathf.Lerp(0.8f, 0.0f, -Time.time);
+        float t = 0f;
+
+        while((t < 3f) && (fastMusic.volume > 0.0f))
+        {
+            t += Time.deltaTime;
+
+            fastMusic.volume -= 1.0f;
+
+            yield return null;
+        }
     }
 
-    void TransitionToFast()
+    IEnumerator TransitionToFast()
     {
-        fastMusic.volume = Mathf.Lerp(0.0f, 0.8f, Time.time);
+        float t = 0f;
+
+        while ((t < 3f) && (fastMusic.volume < 1.0f))
+        {
+            t += Time.deltaTime;
+
+            fastMusic.volume += 1.0f;
+
+            yield return null;
+        }
+
     }
 }
