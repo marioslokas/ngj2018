@@ -64,7 +64,7 @@ public class Claw : MonoBehaviour
 
     private void DoCameraFollow()
     {
-        Vector3 desiredCameraPos = m_Camera.transform.forward * -CameraDistance + ClawBody.position;
+        Vector3 desiredCameraPos = m_Camera.transform.forward * -CameraDistance + ClawBody.position + ClawBody.velocity * 0.7f;
         m_Camera.transform.localPosition = Vector3.Lerp(
             m_Camera.transform.localPosition, desiredCameraPos,
             Time.deltaTime * CameraSpeed);
