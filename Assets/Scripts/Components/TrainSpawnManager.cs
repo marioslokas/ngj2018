@@ -11,7 +11,7 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private float trainHoldingTime;
 
     [SerializeField]
-    private Cart cartPrefab;
+	private Transform cartPrefab;
 
     [SerializeField]
     private Transform trainParentPrefab;
@@ -65,7 +65,7 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
         var cartRef = Instantiate(cartPrefab, trainRef);
 
         cartRef.transform.localPosition = new Vector3(xDirection * -3.53f, 0, 0);
-        cartRef.Init((Shapes)UnityEngine.Random.Range(1, 5));
+//        cartRef.Init((Shapes)UnityEngine.Random.Range(1, 5));
     }
 
     private void Update()

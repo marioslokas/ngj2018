@@ -12,6 +12,7 @@ TagManager:
   - FastMusic
   - Music
   - TrainRoof
+  - PeopleSpawnPoint
   layers:
   - Default
   - TransparentFX
