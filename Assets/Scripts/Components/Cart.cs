@@ -22,6 +22,10 @@ public class Cart : MonoBehaviour
 
         if ((pb = collision.collider.GetComponent<PersonBehavior>()) != null)
         {
+            if (MyShape == Shapes.All || MyShape == pb.MyShape) return;
+
+            //ToDo Panic or run out?
+            Destroy(pb.gameObject);
         }
     }
 }
