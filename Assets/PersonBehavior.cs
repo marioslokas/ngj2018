@@ -34,6 +34,9 @@ public class PersonBehavior : MonoBehaviour
 
 	private bool standingUp;
 
+	public GameObject explosionPrefab;
+
+
     private void Awake()
 	{
 		MyShape = (Shapes)Random.Range (1, 4);
@@ -135,6 +138,11 @@ public class PersonBehavior : MonoBehaviour
 
         agent.isStopped = false;
     }
+
+	void OnDestroy()
+	{
+		Instantiate (explosionPrefab, this.transform.position, this.transform.rotation);
+	}
 		
 
 }

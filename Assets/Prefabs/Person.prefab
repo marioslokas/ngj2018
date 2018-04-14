@@ -139,6 +139,8 @@ MonoBehaviour:
     m_RotationOrder: 0
   distance: {x: 0.05, y: 0, z: 0.05}
   speed: 1
+  explosionPrefab: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
+    type: 2}
 --- !u!136 &136411741690888152
 CapsuleCollider:
   m_ObjectHideFlags: 1
