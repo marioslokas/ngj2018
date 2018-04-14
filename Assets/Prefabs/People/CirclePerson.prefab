@@ -119,6 +119,8 @@ MonoBehaviour:
   hasBeenGrabbed: 0
   walkRadius: 10
   MyShape: 4
+  explosionPefab: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
+    type: 2}
   walkFrequency: 3
   curve:
     serializedVersion: 2

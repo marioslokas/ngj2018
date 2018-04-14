@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 23876352623877876}
   - component: {fileID: 64255341502813982}
   - component: {fileID: 54566414937369012}
+  - component: {fileID: 114853676634405970}
   m_Layer: 0
   m_Name: Roof
   m_TagString: TrainRoof
@@ -815,6 +816,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114853676634405970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550657681763748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ae47cab187faf449eb7a59093f84dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
+    type: 2}
 --- !u!114 &114972217803641308
 MonoBehaviour:
   m_ObjectHideFlags: 1

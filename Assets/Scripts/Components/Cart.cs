@@ -26,16 +26,14 @@ public class Cart : MonoBehaviour
         {
             if (MyShape == Shapes.All || MyShape == pb.MyShape)
             {
-                Debug.Log("PERSON ABOARD");
                 pb.transform.SetParent(this.transform);
                 return;
             }
 
-            GameObject spawnPoint = GameObject.FindGameObjectWithTag("PeopleSpawnPoint");
-            pb.GetComponent<NavMeshAgent>().Warp(spawnPoint.transform.position);
-            Debug.Log("DIDN'T FIT");
+            //			GameObject spawnPoint = GameObject.FindGameObjectWithTag ("PeopleSpawnPoint");
+            //			pb.GetComponent<NavMeshAgent> ().Warp (spawnPoint.transform.position);
             //ToDo Panic or run out?
-            //            Destroy(pb.gameObject);
+            Destroy(pb.gameObject);
         }
     }
 }

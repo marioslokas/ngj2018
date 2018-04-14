@@ -27,10 +27,10 @@ public class PeopleSpawner : MonoBehaviour
     private void Update()
     {
         currentElapsedTime += Time.deltaTime;
+
         if (currentElapsedTime > spawningInterval && canSpawn)
         {
             GameObject spawnPoint = PickSpawnPoint();
-
             PersonBehavior personPrefab = null;
 
             var shape = (Shapes)Random.Range(2, 5);
