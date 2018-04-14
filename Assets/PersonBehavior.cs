@@ -14,9 +14,9 @@ public class PersonBehavior : MonoBehaviour
 
     public Shapes MyShape { get; private set; }
 
-	public float walkFrequency = 3f;
+	public float walkFrequency = 6f;
 		
-
+	public float currentTime = 0f;
 
 
     private void Awake()
@@ -27,10 +27,18 @@ public class PersonBehavior : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         agent = this.GetComponent<NavMeshAgent>();
+		agent.Warp (this.transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		currentTime += Time.deltaTime;
+
+		if (currentTime > walkFrequency) {
+			Walk ();
+			currentTime = 0f;
+		}
 		
 	}
 
