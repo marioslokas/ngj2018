@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class ClawObject : MonoBehaviour
 {
@@ -46,6 +47,21 @@ public class ClawObject : MonoBehaviour
             }
         }
     }
+
+	IEnumerator TryAndGrab()
+	{
+		Animator.SetTrigger(TempHasPeople ? kAnimatorRelease : kAnimatorGrab);
+		yield return null;
+		yield return Animator.GetCurrentAnimatorStateInfo (0).length;
+
+		Collider[] peopleInRange = Physics.OverlapSphere (this.transform.position, 2f);
+
+		if (peopleInRange.Length != 0) {
+			// grab
+		}
+
+
+	}
 
     public void GatherPeople()
     {

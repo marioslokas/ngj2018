@@ -113,6 +113,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1857104274288154, guid: 721e4b6bb26604946813433c786ded40, type: 2}
+  walkRadius: 10
+  walkFrequency: 6
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  distance: {x: 0.05, y: 0, z: 0.05}
+  speed: 1
 --- !u!136 &136411741690888152
 CapsuleCollider:
   m_ObjectHideFlags: 1
