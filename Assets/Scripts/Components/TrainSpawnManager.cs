@@ -58,7 +58,7 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
             var cartRef = Instantiate(cartPrefab, trainRef);
 
             cartRef.transform.localPosition = Vector3.zero - new Vector3(cartRef.CartLength * i * 1.2f, 0, 0);
-            var currentShape = (Shapes)UnityEngine.Random.Range(0, 4);
+            var currentShape = (Shapes)UnityEngine.Random.Range(1, 5);
 
             if (oldShape == Shapes.All || oldShape != currentShape)
             {

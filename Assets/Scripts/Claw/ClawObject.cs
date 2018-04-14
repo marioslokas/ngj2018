@@ -2,29 +2,48 @@
 
 public class ClawObject : MonoBehaviour
 {
-    public Animator Animator;
-
-    private const string kAnimatorGrab = "Grab";
-    private const string kAnimatorRelease = "Release";
-
     [HideInInspector] public bool IsGrabbing;
     [HideInInspector] public bool TempHasPeople;
 
+    private float m_DesiredHeight = 0;
+
     private void Awake()
     {
-        Debug.Assert(Animator != null, "Claw Object is missing a reference to its Animator", this);
+        m_DesiredHeight = transform.parent.position.y;
     }
 
     private void Update()
     {
+        transform.position = Vector3.Lerp(transform.position,
+            new Vector3(transform.position.x, m_DesiredHeight, transform.position.z),
+            Time.deltaTime * 2);
+
         if (IsGrabbing)
         {
-            return;
+            if (Mathf.Abs(transform.position.y - m_DesiredHeight) < 0.1f)
+            {
+                GatherPeople();
+                m_DesiredHeight = transform.parent.position.y;
+                IsGrabbing = false;
+            }
         }
-
-        if (Input.GetMouseButtonDown(0))
+        else if (Input.GetMouseButtonDown(0))
         {
-            Animator.SetTrigger(TempHasPeople ? kAnimatorRelease : kAnimatorGrab);
+            if (TempHasPeople)
+            {
+                ReleasePeople();
+            }
+            else
+            {
+                RaycastHit info;
+                if (!Physics.Raycast(transform.position, Vector3.down, out info, 20))
+                {
+                    return;
+                }
+
+                m_DesiredHeight = transform.position.y - info.distance;
+                IsGrabbing = true;
+            }
         }
     }
 

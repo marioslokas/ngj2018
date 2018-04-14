@@ -48,12 +48,13 @@ public class Claw : MonoBehaviour
 
         if (!ClawObject.IsGrabbing)
         {
-            x = Input.GetAxis("Mouse X");
-            y = Input.GetAxis("Mouse Y");
+            float modif = Speed * Time.deltaTime;
+            x = Input.GetAxis("Mouse X") * modif;
+            y = Input.GetAxis("Mouse Y") * modif;
         }
 
-        m_ClawVeloctiy = new Vector3(m_ClawVeloctiy.x + x * Speed * Time.deltaTime, 0,
-                                     m_ClawVeloctiy.z + y * Speed * Time.deltaTime);
+        m_ClawVeloctiy = new Vector3(m_ClawVeloctiy.x + x, 0,
+                                     m_ClawVeloctiy.z + y);
 
         ClawBody.velocity = m_ClawVeloctiy;
         m_ClawVeloctiy = m_ClawVeloctiy * Drag;
