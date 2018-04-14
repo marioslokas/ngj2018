@@ -66,8 +66,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817936173174412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4383267861561720}
   m_Father: {fileID: 0}
@@ -142,10 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClawBody: {fileID: 54905478845417212}
   ClawObject: {fileID: 114853918286758960}
-  ClawZone: {fileID: 11400000, guid: 50b2a626cf0129945a4e6371d4bf124f, type: 2}
-  Speed: 12
+  ClawZone: {fileID: 11400000, guid: 5aeffa254a78f4441a69e435c086837e, type: 2}
+  Speed: 14
   Drag: 0.97
-  CameraDistance: 15
+  CameraDistance: 9
   CameraSpeed: 4
 --- !u!114 &114853918286758960
 MonoBehaviour:
@@ -158,5 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28582b01389b4d2419fcc03e59f0c63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClawBody: {fileID: 54905478845417212}
   IsGrabbing: 0
-  TempHasPeople: 0
+  grabbingRange: 1.4

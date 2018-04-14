@@ -778,29 +778,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4867367788797458, guid: dfab74e9aaa9bb741a6182c2df523357, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867367788797458, guid: dfab74e9aaa9bb741a6182c2df523357, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867367788797458, guid: dfab74e9aaa9bb741a6182c2df523357, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114193652041365302, guid: dfab74e9aaa9bb741a6182c2df523357,
-        type: 2}
-      propertyPath: CameraDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114193652041365302, guid: dfab74e9aaa9bb741a6182c2df523357,
-        type: 2}
-      propertyPath: ClawZone
-      value: 
-      objectReference: {fileID: 11400000, guid: 5aeffa254a78f4441a69e435c086837e,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfab74e9aaa9bb741a6182c2df523357, type: 2}
   m_IsPrefabParent: 0
