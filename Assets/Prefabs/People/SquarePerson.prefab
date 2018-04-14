@@ -26,8 +26,9 @@ GameObject:
   - component: {fileID: 54655891775172588}
   - component: {fileID: 195204446587523520}
   - component: {fileID: 136519187778591104}
+  - component: {fileID: 114077032495395876}
   m_Layer: 8
-  m_Name: Person
+  m_Name: SquarePerson
   m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,6 +103,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114077032495395876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1295156569581798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ae47cab187faf449eb7a59093f84dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
+    type: 2}
 --- !u!114 &114293672650087008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +132,7 @@ MonoBehaviour:
   isOnCrane: 0
   hasBeenGrabbed: 0
   walkRadius: 10
+  MyShape: 2
   walkFrequency: 3
   curve:
     serializedVersion: 2
@@ -139,8 +154,6 @@ MonoBehaviour:
     m_RotationOrder: 0
   distance: {x: 0.05, y: 0, z: 0.05}
   speed: 1
-  explosionPrefab: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
-    type: 2}
 --- !u!136 &136411741690888152
 CapsuleCollider:
   m_ObjectHideFlags: 1

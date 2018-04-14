@@ -8,7 +8,6 @@ public class Train : MonoBehaviour
     private Vector3 direction;
     private bool hasBeenStoopped;
     private bool stopped = false;
-    internal Cart Cart;
 
     public void Init(Vector3 direction)
     {
@@ -17,8 +16,6 @@ public class Train : MonoBehaviour
 
     private void Update()
     {
-        Cart.SetDoors(stopped);
-
         if (TrainSpawnManager.Instance.TrainHoldingTimer <= 0)
         {
             stopped = false;
