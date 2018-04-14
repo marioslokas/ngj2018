@@ -65,7 +65,7 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
 
         var cartRef = Instantiate(cartPrefab, trainObj);
 
-        //train.Cart = cartRef.GetComponent<Cart>();
+        train.Cart = cartRef.GetComponentInChildren<Cart>();
 
         cartRef.transform.localPosition = new Vector3(xDirection * -3.53f, 0, 0);
 //        cartRef.Init((Shapes)UnityEngine.Random.Range(1, 5));

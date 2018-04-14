@@ -862,5 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b65d28f01f70d4f826af69077f01b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftDoor: {fileID: 95137233257909704}
+  RightDoor: {fileID: 95095022299752664}
   CartLength: 1
   spawnPoint: {fileID: 0}
