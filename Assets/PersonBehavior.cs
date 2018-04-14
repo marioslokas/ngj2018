@@ -34,7 +34,6 @@ public class PersonBehavior : MonoBehaviour
 
 	private bool standingUp;
 
-
     private void Awake()
 	{
 		MyShape = (Shapes)Random.Range (1, 4);
@@ -54,7 +53,6 @@ public class PersonBehavior : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
 		if (isOnCrane || isOnTrain || hasBeenGrabbed) {
 			return;
 		}

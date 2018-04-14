@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4867746528194960}
   m_Layer: 0
   m_Name: SpawnPoint
-  m_TagString: Untagged
+  m_TagString: PeopleSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 4230570743623136}
   - component: {fileID: 33857524125584572}
   - component: {fileID: 23153862199023204}
+  - component: {fileID: 65314500031265654}
   m_Layer: 0
   m_Name: Tracks_Simple (1)
   m_TagString: Untagged
@@ -181,6 +182,7 @@ GameObject:
   - component: {fileID: 4775787905470900}
   - component: {fileID: 33922874740315210}
   - component: {fileID: 23454134658498460}
+  - component: {fileID: 65422002943635684}
   m_Layer: 0
   m_Name: Tracks_Simple
   m_TagString: Untagged
@@ -208,7 +210,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323734698318602}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 11.70491, y: -1.7159271, z: -0.17}
+  m_LocalPosition: {x: 11.70491, y: -1.86, z: -0.17}
   m_LocalScale: {x: 200, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 4262131489718760}
@@ -296,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905624992593852}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 11.70491, y: -1.7159271, z: 10.28}
+  m_LocalPosition: {x: 11.70491, y: -1.86, z: 10.28}
   m_LocalScale: {x: 200, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 4262131489718760}
@@ -531,6 +533,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65314500031265654
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323734698318602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02176548, y: 0.23700498, z: 0.01}
+  m_Center: {x: 0, y: 0.000000022351742, z: 0.005}
+--- !u!65 &65422002943635684
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905624992593852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02176548, y: 0.23700498, z: 0.01}
+  m_Center: {x: 0, y: 0.000000022351742, z: 0.005}
 --- !u!114 &114043066614771324
 MonoBehaviour:
   m_ObjectHideFlags: 1

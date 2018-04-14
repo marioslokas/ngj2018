@@ -26,11 +26,11 @@ public class ClawObject : MonoBehaviour
     {
         transform.position = Vector3.Lerp(transform.position,
             new Vector3(transform.position.x, m_DesiredHeight, transform.position.z),
-            Time.deltaTime * 2);
+            Time.deltaTime * 3);
 
         if (IsGrabbing)
         {
-            if (Mathf.Abs(transform.position.y - m_DesiredHeight) < 0.1f)
+            if (Mathf.Abs(transform.position.y - m_DesiredHeight) < 0.35f)
             {
                 GatherPeople();
                 m_DesiredHeight = transform.parent.position.y;
@@ -51,7 +51,7 @@ public class ClawObject : MonoBehaviour
                     return;
                 }
 
-                m_DesiredHeight = transform.position.y - info.distance;
+                m_DesiredHeight = transform.position.y - info.distance + 0.4f;
                 IsGrabbing = true;
             }
         }

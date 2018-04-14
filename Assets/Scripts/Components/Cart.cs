@@ -26,6 +26,7 @@ public class Cart : MonoBehaviour
         {
 			if (MyShape == Shapes.All || MyShape == pb.MyShape) {
 				Debug.Log ("PERSON ABOARD");
+                pb.transform.SetParent(this.transform);
 				return;
 			}
 
