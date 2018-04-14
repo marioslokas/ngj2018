@@ -1,11 +1,24 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class ClawObject : MonoBehaviour
 {
     [HideInInspector] public bool IsGrabbing;
     [HideInInspector] public bool TempHasPeople;
 
+	[SerializeField]
+	private float grabbingRange = 5f;
+
     private float m_DesiredHeight = 0;
+
+	List<GameObject> caughtPeople;
+
+	void Start()
+	{
+		caughtPeople = new List<GameObject> ();
+	}
 
     private void Awake()
     {
@@ -51,11 +64,41 @@ public class ClawObject : MonoBehaviour
     {
         Debug.Log("Grabbing people");
         TempHasPeople = true;
+
+		Collider[] peopleHit = Physics.OverlapSphere (this.transform.position, grabbingRange);
+
+		if (peopleHit.Length !=0) {
+			TempHasPeople = true;
+		}
+
+		for (int i = 0; i < peopleHit.Length; i++) {
+			if (peopleHit [i].gameObject.tag.Equals("Person")) {
+				AttachPersonToCrane (peopleHit [i]);
+			}
+		}
     }
+
+	void AttachPersonToCrane(Collider person)
+	{
+		person.GetComponent<PersonBehavior> ().isOnCrane = true;
+		person.GetComponent<PersonBehavior> ().hasBeenGrabbed = true;
+		person.transform.SetParent (this.transform);
+		person.GetComponent<Rigidbody> ().isKinematic = true;
+		person.GetComponent<Rigidbody> ().useGravity = false;
+		person.GetComponent<NavMeshAgent> ().enabled = false;
+		caughtPeople.Add (person.transform.gameObject);
+	}
+
 
     public void ReleasePeople()
     {
-        Debug.Log("Releasing people");
-        TempHasPeople = false;
+		foreach(GameObject go in caughtPeople)
+		{
+			go.GetComponent<PersonBehavior> ().isOnCrane = false;
+			go.transform.SetParent (null);
+			go.GetComponent<Rigidbody> ().isKinematic = false;
+			go.GetComponent<Rigidbody> ().useGravity = true;
+		}
+		TempHasPeople = false;
     }
 }

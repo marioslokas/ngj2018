@@ -7,8 +7,9 @@ public class PersonBehavior : MonoBehaviour
     public GameObject platform;
 
     private bool isOnPlatform;
-    private bool isOnCrane;
+    public bool isOnCrane;
     private bool isOnTrain;
+	public bool hasBeenGrabbed;
 
 	public float walkRadius = 10f;
 
@@ -16,7 +17,15 @@ public class PersonBehavior : MonoBehaviour
 
 	public float walkFrequency = 6f;
 		
-	public float currentTime = 0f;
+	private float currentTime = 0f;
+
+	[Header("Wiggling parameters")]
+	public AnimationCurve curve;
+	public Vector3 distance;
+	public float speed;
+
+	private Vector3 startPos, toPos;
+	private float timeStart;
 
 
     private void Awake()
@@ -28,42 +37,59 @@ public class PersonBehavior : MonoBehaviour
 	void Start () {
         agent = this.GetComponent<NavMeshAgent>();
 		agent.Warp (this.transform.position);
+
+		startPos = transform.position;
+		randomToPos();
+		isOnPlatform = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		currentTime += Time.deltaTime;
-
-		if (currentTime > walkFrequency) {
-			Walk ();
-			currentTime = 0f;
+		
+		if (isOnCrane || isOnTrain || hasBeenGrabbed) {
+			return;
 		}
+
+		if (agent.pathPending) {
+			return;
+		}
+			
+		currentTime += Time.deltaTime;
+		if (!isOnCrane && !isOnTrain) {
+			if (currentTime > walkFrequency) {
+				Walk ();
+				currentTime = 0f;
+			}
+		}
+			
 		
 	}
 
-	void OnCollisionEnter(Collision other)
+	void Wiggle()
 	{
-//        agent.Warp(other.contacts[0].point);
-//
-//        if (other.collider.gameObject.tag.Equals("Platform"))
-//        {
-//            isOnPlatform = true;
-//            Walk();
-//        }
-//        else if (other.collider.gameObject.tag.Equals("Person"))
-//        {
-//            // Walk();
-//        }
-    }
+		float d = (Time.time - timeStart) / speed, m = curve.Evaluate(d);
+		if (d > 1) {
+			randomToPos();
+		} else if (d < 0.5) {
+			transform.position = Vector3.Lerp(startPos, toPos, m * 2.0f);
+		} else {
+			transform.position = Vector3.Lerp(toPos, startPos, (m - 0.5f) * 2.0f);
+		}
+	}
 
-    private void OnCollisionExit(Collision other)
-    {
-//        if (other.collider.gameObject.tag.Equals("Platform"))
-//        {
-//            isOnPlatform = false;
-//        }
-    }
+	void randomToPos() {
+		toPos = startPos;
+		toPos.x += Random.Range(-1.0f, +1.0f) * distance.x;
+		toPos.y += Random.Range(-1.0f, +1.0f) * distance.y;
+		toPos.z += Random.Range(-1.0f, +1.0f) * distance.z;
+		timeStart = Time.time;
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag.Equals("TrainArea")) {
+			isOnTrain = true;
+		}
+	}
 
     private void Walk()
     {
