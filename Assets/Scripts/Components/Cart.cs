@@ -12,5 +12,16 @@ public class Cart : MonoBehaviour
     public void Init(Shapes myShape)
     {
         MyShape = myShape;
+
+        Debug.Log(myShape);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        PersonBehavior pb;
+
+        if ((pb = collision.collider.GetComponent<PersonBehavior>()) != null)
+        {
+        }
     }
 }
