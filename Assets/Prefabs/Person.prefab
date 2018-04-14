@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54655891775172588}
   m_Layer: 0
   m_Name: Person
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1295156569581798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.4174323, y: 2.01, z: -4.5204883}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -117,7 +117,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1295156569581798}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 92988fbaec5e1844dbc734ba74e04980, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
