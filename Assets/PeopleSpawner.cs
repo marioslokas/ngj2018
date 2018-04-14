@@ -7,6 +7,7 @@ public class PeopleSpawner : MonoBehaviour {
 	public GameObject[] spawnPoints;
 
 	public float spawningInterval = 10f;
+
 	public bool canSpawn = true;
 
 	public GameObject personPrefab;
