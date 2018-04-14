@@ -56,7 +56,6 @@ public class PersonBehavior : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		
 		if (isOnCrane || isOnTrain || hasBeenGrabbed) {
 			return;
 		}
