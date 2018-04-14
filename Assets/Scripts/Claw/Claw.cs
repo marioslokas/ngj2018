@@ -4,6 +4,7 @@
 public class Claw : MonoBehaviour
 {
     public Rigidbody ClawBody;
+    public ClawObject ClawObject;
 
     public float Speed = 12f;
     public float Drag = 0.97f;
@@ -18,6 +19,7 @@ public class Claw : MonoBehaviour
     private void Awake()
     {
         Debug.Assert(ClawBody != null, "Claw behavior is missing its rigidbody", this);
+        Debug.Assert(ClawObject != null, "Claw behavior is missing its claw object", this);
         m_Camera = Camera.main;
     }
 
@@ -40,8 +42,14 @@ public class Claw : MonoBehaviour
 
     private void DoMove()
     {
-        float x = Input.GetAxis("Mouse X");
-        float y = Input.GetAxis("Mouse Y");
+        float x = 0;
+        float y = 0;
+
+        if (!ClawObject.IsGrabbing)
+        {
+            x = Input.GetAxis("Mouse X");
+            y = Input.GetAxis("Mouse Y");
+        }
 
         m_ClawVeloctiy = new Vector3(m_ClawVeloctiy.x + x * Speed * Time.deltaTime, 0, 
                                      m_ClawVeloctiy.z + y * Speed * Time.deltaTime);
