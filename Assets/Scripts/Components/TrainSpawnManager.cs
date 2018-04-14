@@ -32,8 +32,6 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private Text textTimerRef;
     private int minCartCount = 1;
     private int maxCartCount = 5;
-    private int minPlebCount = 15;
-    private int maxPlebCount = 18;
     private string basisTimerText;
     private float betweenWavesOfPeopleTimer;
 
@@ -72,25 +70,8 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private void Update()
     {
         BetweenTrainsTimer -= Time.deltaTime;
-        betweenWavesOfPeopleTimer -= Time.deltaTime;
 
         textTimerRef.text = basisTimerText + (int)BetweenTrainsTimer;
-
-        if (timeBetweenWavesOfPeople <= 0)
-        {
-            betweenWavesOfPeopleTimer = timeBetweenWavesOfPeople;
-
-            //Spawn the wave of people
-
-            int amountOfPeople = UnityEngine.Random.Range(minPlebCount, maxPlebCount);
-
-            for (int i = 0; i < amountOfPeople; i++)
-            {
-                var pleb = Instantiate(peoplePrefab);
-
-                //Set offset on pleb pos
-            }
-        }
     }
 
     private void LateUpdate()
