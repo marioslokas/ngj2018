@@ -310,16 +310,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClawBody: {fileID: 871704471}
   ClawObject: {fileID: 1727879945}
+  ClawZone: {fileID: 11400000, guid: 50b2a626cf0129945a4e6371d4bf124f, type: 2}
   Speed: 12
   Drag: 0.97
   CameraDistance: 15
   CameraSpeed: 4
-  ClawZone:
-    serializedVersion: 2
-    x: -10
-    y: -10
-    width: 20
-    height: 20
 --- !u!54 &871704471
 Rigidbody:
   m_ObjectHideFlags: 0
