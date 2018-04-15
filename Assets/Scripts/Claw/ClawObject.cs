@@ -7,6 +7,10 @@ public class ClawObject : MonoBehaviour
 {
     public Rigidbody ClawBody;
 
+    public Animator Claw1;
+    public Animator Claw2;
+    public Animator Claw3;
+
     public AudioSource AudioClawOpen;
     public AudioSource AudioClawClose;
 
@@ -37,8 +41,16 @@ public class ClawObject : MonoBehaviour
             new Vector3(transform.position.x, m_DesiredHeight, transform.position.z),
             Time.deltaTime * 3);
 
+        //Claw1.SetBool("IsOpen", IsGrabbing);
+        //Claw2.SetBool("IsOpen", IsGrabbing);
+        //Claw3.SetBool("IsOpen", IsGrabbing);
+
         if (IsGrabbing)
         {
+            Claw1.SetTrigger("Grab");
+            Claw2.SetTrigger("Grab");
+            Claw3.SetTrigger("Grab");
+
             if (Mathf.Abs(transform.position.y - m_DesiredHeight) < 0.35f)
             {
                 AudioClawClose.Play();

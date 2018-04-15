@@ -31,7 +31,6 @@ public class Cart : MonoBehaviour
             if (MyShape == Shapes.All || MyShape == pb.MyShape)
             {
                 pb.transform.SetParent(this.transform);
-                pb.Body.isKinematic = true;
                 pb.isOnTrain = true;
                 return;
             }
