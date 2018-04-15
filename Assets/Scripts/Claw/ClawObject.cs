@@ -63,7 +63,7 @@ public class ClawObject : MonoBehaviour
 
                 AudioClawOpen.Play();
 
-                m_DesiredHeight = transform.position.y - info.distance + 0.4f;
+                m_DesiredHeight = transform.position.y - info.distance;
                 IsGrabbing = true;
             }
         }
