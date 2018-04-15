@@ -7,11 +7,12 @@ public class Claw : MonoBehaviour
     public ClawObject ClawObject;
     public PlayArea ClawZone;
 
+    public AudioSource AudioMoving;
+
     public float Speed = 12f;
     public float Drag = 0.97f;
     public float CameraDistance = 15f;
     public float CameraSpeed = 4f;
-
 
     private Vector3 m_ClawVeloctiy = Vector3.zero;
     private Camera m_Camera;
@@ -36,7 +37,7 @@ public class Claw : MonoBehaviour
         {
             Cursor.lockState = (CursorLockMode)(((int)++Cursor.lockState) % 2);
         }
-
+        
         DoMove();
         DoCameraFollow();
     }
@@ -58,6 +59,9 @@ public class Claw : MonoBehaviour
 
         ClawBody.velocity = m_ClawVeloctiy;
         m_ClawVeloctiy = m_ClawVeloctiy * Drag;
+
+        AudioMoving.pitch = Mathf.Clamp(Mathf.Sqrt(m_ClawVeloctiy.magnitude) / 7, 0, 1.2f - 0.7f) + 0.7f;
+        //Debug.Log(m_ClawVeloctiy.magnitude);
 
         transform.localPosition = ClawZone.ClampVectorToArea(transform.localPosition);
     }

@@ -34,6 +34,8 @@ public class PersonBehavior : MonoBehaviour
 
     private bool standingUp;
 
+    public AudioSource AudioThump;
+
     // Use this for initialization
     private void Start()
     {
@@ -146,6 +148,15 @@ public class PersonBehavior : MonoBehaviour
         if (other.gameObject.tag.Equals("TrainArea"))
         {
             isOnTrain = true;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (hasBeenGrabbed)
+        {
+            AudioThump.pitch = Random.Range(0.3f, 1.9f);
+            AudioThump.Play();
         }
     }
 

@@ -9,19 +9,29 @@ public class Train : MonoBehaviour
     private bool hasBeenStoopped;
     private bool stopped = false;
 
+    public AudioSource AudioTrainStopping;
+    public AudioSource AudioTrainLeaving;
+
     public void Init(Vector3 direction)
     {
         this.direction = direction;
+
+        AudioTrainStopping.Play();
     }
 
     private void Update()
     {
         if (TrainSpawnManager.Instance.TrainHoldingTimer <= 0)
         {
+            if (stopped)
+            {
+                AudioTrainLeaving.Play();
+            }
+
             stopped = false;
             TrainSpawnManager.Instance.StartedHolding = false;
         }
-
+        
         if (!stopped)
         {
             //ToDo movement
