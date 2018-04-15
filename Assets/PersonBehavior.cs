@@ -12,6 +12,8 @@ public class PersonBehavior : MonoBehaviour
     internal bool isOnTrain;
     [HideInInspector] public bool hasBeenGrabbed;
 
+    public GameObject[] m_Visuals;
+
     public float walkRadius = 10f;
 
     public Shapes MyShape;
@@ -47,20 +49,9 @@ public class PersonBehavior : MonoBehaviour
 
         rotationUp = new Quaternion(0, 1, 0, 0);
 
-        switch (MyShape)
-        {
-            case Shapes.Square:
-                GetComponent<Renderer>().material.color = Color.red;
-                break;
+        Debug.Assert(Mathf.Clamp((int)MyShape, 2, 4) == (int)MyShape, "Person Behavior receives the wrong shape.", this);
 
-            case Shapes.Triangle:
-                GetComponent<Renderer>().material.color = Color.blue;
-                break;
-
-            case Shapes.Circle:
-                GetComponent<Renderer>().material.color = Color.black;
-                break;
-        }
+        m_Visuals[(int)MyShape - 2].SetActive(true);
     }
 
     // Update is called once per frame

@@ -53,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4631615119584184}
   m_Layer: 0
-  m_Name: SpanwingPoint2
+  m_Name: SpanwingPoint2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +148,21 @@ GameObject:
   - component: {fileID: 4968082675453224}
   m_Layer: 0
   m_Name: SpanwingPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!1 &1541586243846680
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4624632452132630}
+  m_Layer: 0
+  m_Name: SpanwingPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,6 +276,19 @@ Transform:
   m_Father: {fileID: 4262131489718760}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4624632452132630
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541586243846680}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.9800034, y: 0, z: 2.9499993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4767279708180006}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4631615119584184
 Transform:
   m_ObjectHideFlags: 1
@@ -268,11 +296,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172653445980664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.9800034, y: 0, z: 2.9499993}
+  m_LocalPosition: {x: -0.72, y: 0, z: -0.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4767279708180006}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4767279708180006
 Transform:
@@ -285,9 +313,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4968082675453224}
-  - {fileID: 4631615119584184}
+  - {fileID: 4624632452132630}
   - {fileID: 4451480153710582}
   - {fileID: 4108877574567992}
+  - {fileID: 4631615119584184}
   m_Father: {fileID: 4262131489718760}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -570,14 +599,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints:
   - {fileID: 1471040464526620}
-  - {fileID: 1172653445980664}
+  - {fileID: 1541586243846680}
   - {fileID: 1017312600027694}
   - {fileID: 1431413058691552}
-  spawningInterval: 4
+  - {fileID: 1172653445980664}
+  spawningInterval: 3.4
   canSpawn: 1
-  personPrefab: {fileID: 1295156569581798, guid: a6961fa385bbb7d4dad0d75d20a23268,
+  personPrefab: {fileID: 114396491725988774, guid: b359fae22311ff347a63253f82362b54,
     type: 2}
-  explosionPrefab: {fileID: 0}
 --- !u!114 &114086602343001848
 MonoBehaviour:
   m_ObjectHideFlags: 1

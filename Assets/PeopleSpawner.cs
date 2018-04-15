@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
+﻿using UnityEngine;
 
 public class PeopleSpawner : MonoBehaviour
 {
@@ -11,19 +8,17 @@ public class PeopleSpawner : MonoBehaviour
 
     public bool canSpawn = true;
 
-    public PersonBehavior[] personPrefabs;
+    public PersonBehavior personPrefab;
 
     private GameObject spawningPoint;
 
     private float currentElapsedTime;
 
-    // Use this for initialization
     private void Start()
     {
         currentElapsedTime = 0f;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         currentElapsedTime += Time.deltaTime;
@@ -31,19 +26,9 @@ public class PeopleSpawner : MonoBehaviour
         if (currentElapsedTime > spawningInterval && canSpawn)
         {
             GameObject spawnPoint = PickSpawnPoint();
-            PersonBehavior personPrefab = null;
 
-            var shape = (Shapes)Random.Range(2, 5);
-
-            for (int i = 0; i < personPrefabs.Length; i++)
-            {
-                if (personPrefabs[i].MyShape == shape)
-                {
-                    personPrefab = personPrefabs[i];
-                }
-            }
-
-            var newSphere = Instantiate(personPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            PersonBehavior newSphere = Instantiate(personPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            newSphere.MyShape = (Shapes)Random.Range(2, 5);
             currentElapsedTime = 0f;
         }
     }
