@@ -22,10 +22,9 @@ GameObject:
   - component: {fileID: 33266432023521906}
   - component: {fileID: 23723580433727036}
   - component: {fileID: 95463173809998866}
-  - component: {fileID: 64312224644056842}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NPC_Cylinder
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,10 +40,9 @@ GameObject:
   - component: {fileID: 33525895358910378}
   - component: {fileID: 23937291003322236}
   - component: {fileID: 95894118218261032}
-  - component: {fileID: 64087632300214008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NPC_Triangle
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,10 +58,9 @@ GameObject:
   - component: {fileID: 33036589686488568}
   - component: {fileID: 23928966168125864}
   - component: {fileID: 95325857621722384}
-  - component: {fileID: 64918073859414826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NPC_Cube
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +78,7 @@ GameObject:
   - component: {fileID: 195613688685096982}
   - component: {fileID: 114372482535998056}
   - component: {fileID: 82178875401013382}
-  - component: {fileID: 135337232759197638}
+  - component: {fileID: 64772493549525974}
   m_Layer: 8
   m_Name: Person
   m_TagString: Person
@@ -122,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1690288863369478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.61, y: 0, z: 2.88}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4094065345764558}
@@ -282,48 +279,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64087632300214008
+--- !u!64 &64772493549525974
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1315759721685372}
+  m_GameObject: {fileID: 1690288863369478}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 8756561b5114cad4cb6f729a16d5de70, type: 3}
---- !u!64 &64312224644056842
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1287138655522748}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
+  m_CookingOptions: -1
+  m_SkinWidth: 0.02
   m_Mesh: {fileID: 4300000, guid: fa20159ab00c26d4eb01915850174798, type: 3}
---- !u!64 &64918073859414826
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1530344305783926}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: d13e7399bbdce7f43a63108112f1df8e, type: 3}
 --- !u!82 &82178875401013382
 AudioSource:
   m_ObjectHideFlags: 1
@@ -488,6 +457,7 @@ MonoBehaviour:
   - {fileID: 1530344305783926}
   - {fileID: 1315759721685372}
   - {fileID: 1287138655522748}
+  Body: {fileID: 54977122939876066}
   walkRadius: 10
   MyShape: 4
   walkFrequency: 3
@@ -512,18 +482,6 @@ MonoBehaviour:
   distance: {x: 0.05, y: 0, z: 0.05}
   speed: 1
   AudioThump: {fileID: 82178875401013382}
---- !u!135 &135337232759197638
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1690288863369478}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.1719978
-  m_Center: {x: 0, y: 0.6719978, z: 0}
 --- !u!195 &195613688685096982
 NavMeshAgent:
   m_ObjectHideFlags: 1

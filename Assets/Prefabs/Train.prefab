@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114972217803641308}
   m_Layer: 0
   m_Name: Container
-  m_TagString: Untagged
+  m_TagString: TrainZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 114853676634405970}
   - component: {fileID: 114175617142721692}
   - component: {fileID: 82396251449325298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Roof
   m_TagString: TrainRoof
   m_Icon: {fileID: 0}
@@ -801,11 +801,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019639600561708}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.534592, y: 1.3588576, z: 8.738145}
-  m_Center: {x: 1.6538265, y: 0.17942823, z: 0.0584808}
+  m_Size: {x: 13.6414995, y: 1.4188769, z: 6.6143026}
+  m_Center: {x: 0.6612164, y: 1.6976743, z: 0.527087}
 --- !u!65 &65630277723762032
 BoxCollider:
   m_ObjectHideFlags: 1

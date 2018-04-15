@@ -26,7 +26,7 @@ public class Cart : MonoBehaviour
     {
         PersonBehavior pb;
 
-        if ((pb = other.gameObject.GetComponent<PersonBehavior>()) != null)
+        if ((pb = other.GetComponent<PersonBehavior>()) != null)
         {
             if (MyShape == Shapes.All || MyShape == pb.MyShape)
             {

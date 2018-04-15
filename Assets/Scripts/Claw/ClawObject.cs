@@ -11,6 +11,7 @@ public class ClawObject : MonoBehaviour
     public AudioSource AudioClawClose;
 
     public AudioSource AudioOpenLid;
+    public AudioSource AudioSwuzh;
 
     public AudioClip[] AudioReactions;
     public AudioSource AudioReaction;
@@ -22,8 +23,8 @@ public class ClawObject : MonoBehaviour
 
     private float m_DesiredHeight = 0;
 
-    private List<GameObject> caughtPeople = new List<GameObject>();
-    private List<GameObject> caughtOther = new List<GameObject>();
+    private List<PersonBehavior> caughtPeople = new List<PersonBehavior>();
+    private List<Rigidbody> caughtOther = new List<Rigidbody>();
 
     private void Awake()
     {
@@ -70,27 +71,29 @@ public class ClawObject : MonoBehaviour
 
     public void GatherPeople()
     {
-		Collider[] peopleHit = Physics.OverlapSphere (this.transform.position, grabbingRange);
+		Collider[] thingsHit = Physics.OverlapSphere(transform.position, grabbingRange, LayerMask.GetMask("People"));
 
-		for (int i = 0; i < peopleHit.Length; i++) {
-			if (peopleHit [i].gameObject.CompareTag("Person")) {
-				AttachPersonToCrane (peopleHit [i]);
+		for (int i = 0; i < thingsHit.Length; i++)
+        {
+            if (thingsHit[i].CompareTag("Person"))
+            {
+				AttachPersonToCrane(thingsHit[i].transform);
             }
-            else if (peopleHit[i].gameObject.CompareTag("TrainRoof"))
+            else if (thingsHit[i].CompareTag("TrainRoof"))
             {
                 AudioOpenLid.Play();
 
-                caughtOther.Add(peopleHit[i].gameObject);
-
-                Rigidbody body = peopleHit[i].GetComponent<Rigidbody>();
+                Rigidbody body = thingsHit[i].GetComponent<Rigidbody>();
                 body.isKinematic = true;
                 body.useGravity = false;
-				peopleHit [i].transform.SetParent (this.transform);
+                thingsHit[i].transform.SetParent(this.transform);
+
+                caughtOther.Add(body);
             }
 		}
     }
 
-	void AttachPersonToCrane(Collider person)
+	private void AttachPersonToCrane(Transform person)
     {
         if (Random.Range(0, 5) == 4)
         {
@@ -98,48 +101,49 @@ public class ClawObject : MonoBehaviour
             AudioReaction.Play();
         }
 
-        person.transform.SetParent(this.transform);
-
         person.transform.position = Vector3.MoveTowards(person.transform.position, transform.position, 0.3f);
 
         PersonBehavior pb = person.GetComponent<PersonBehavior>();
         pb.isOnCrane = true;
 		pb.hasBeenGrabbed = true;
         pb.agent.enabled = false;
+        
+        pb.Body.isKinematic = true;
+        pb.Body.useGravity = false;
+        person.transform.SetParent(this.transform);
 
-        Rigidbody body = person.GetComponent<Rigidbody>();
-        body.isKinematic = true;
-		body.useGravity = false;
-
-		caughtPeople.Add(person.transform.gameObject);
+        caughtPeople.Add(pb);
 	}
-
 
     public void ReleasePeople()
     {
+        var addedVelocity = ClawBody.velocity * 0.8f;
+
+        if (addedVelocity.sqrMagnitude > 20 * 20)
+        {
+            AudioSwuzh.Play();
+        }
+
         for (int i = caughtPeople.Count - 1; i >= 0; i--)
         {
-            var go = caughtPeople[i];
-            go.GetComponent<PersonBehavior>().isOnCrane = false;
-            go.transform.SetParent(null);
-
-            var body = go.GetComponent<Rigidbody>();
-            body.isKinematic = false;
-            body.useGravity = true;
-            body.velocity = ClawBody.velocity * 0.8f;
+            var pb = caughtPeople[i];
+            pb.isOnCrane = false;
+            pb.transform.SetParent(null);
+            
+            pb.Body.isKinematic = false;
+            pb.Body.useGravity = true;
+            pb.Body.velocity = addedVelocity;
         }
         caughtPeople.Clear();
 
 
         for (int i = caughtOther.Count - 1; i >= 0; i--)
         {
-			var go = caughtOther[i];
-            go.transform.SetParent(null);
-
-            var body = go.GetComponent<Rigidbody>();
-            body.isKinematic = false;
-            body.useGravity = true;
-            body.velocity = ClawBody.velocity * 1.15f;
+			var rb = caughtOther[i];
+            rb.transform.SetParent(null);
+            rb.isKinematic = false;
+            rb.useGravity = true;
+            rb.velocity = addedVelocity;
         }
         caughtOther.Clear();
     }
@@ -153,6 +157,6 @@ public class ClawObject : MonoBehaviour
         {
             return;
         }
-        Gizmos.DrawWireSphere(info.point, grabbingRange);
+        Gizmos.DrawWireSphere(transform.position, grabbingRange);
     }
 }

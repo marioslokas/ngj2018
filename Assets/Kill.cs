@@ -6,9 +6,9 @@ public class Kill : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
-        if (other.collider.gameObject.tag.Equals("Person") || other.collider.gameObject.tag.Equals("TrainRoof"))
+        if (other.collider.CompareTag("Person") || other.collider.CompareTag("TrainRoof"))
         {
-            GameObject.Destroy(other.collider.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

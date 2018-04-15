@@ -14,6 +14,8 @@ public class PersonBehavior : MonoBehaviour
 
     public GameObject[] m_Visuals;
 
+    public Rigidbody Body;
+
     public float walkRadius = 10f;
 
     public Shapes MyShape;
@@ -133,14 +135,6 @@ public class PersonBehavior : MonoBehaviour
         timeStart = Time.time;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag.Equals("TrainArea"))
-        {
-            isOnTrain = true;
-        }
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (hasBeenGrabbed)
@@ -154,10 +148,16 @@ public class PersonBehavior : MonoBehaviour
     {
         agent.isStopped = true;
 
-        Vector3 randomDirection = Random.insideUnitSphere * walkRadius;
-        randomDirection += transform.position;
+        Vector3 randomDirection;
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
+
+        do
+        {
+            randomDirection = Random.insideUnitSphere * walkRadius;
+            randomDirection += transform.position;
+        }
+        while (!NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1));
+
         Vector3 finalPosition = hit.position;
         agent.SetDestination(finalPosition);
 
