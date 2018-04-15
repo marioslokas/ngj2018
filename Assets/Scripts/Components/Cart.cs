@@ -1,13 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 public class Cart : MonoBehaviour
 {
-    public Animator LeftDoor;
-    public Animator RightDoor;
-
     [SerializeField]
     internal float CartLength = 1;
 
@@ -16,9 +10,16 @@ public class Cart : MonoBehaviour
     [SerializeField]
     private GameObject spawnPoint;
 
+    [SerializeField]
+    private SpriteRenderer m_ShapeIndicator;
+
+    [SerializeField]
+    private Sprite[] m_ShapeIndicators;
+
     private void Start()
     {
-        MyShape = (Shapes)UnityEngine.Random.Range(1, 5);
+        MyShape = (Shapes)Random.Range(1, 5);
+        m_ShapeIndicator.sprite = m_ShapeIndicators[(int)MyShape - 2];
     }
 
     private void OnTriggerEnter(Collider other)
