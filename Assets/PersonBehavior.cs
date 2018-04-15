@@ -9,7 +9,7 @@ public class PersonBehavior : MonoBehaviour
 
     private bool isOnPlatform;
     [HideInInspector] public bool isOnCrane;
-    private bool isOnTrain;
+    internal bool isOnTrain;
     [HideInInspector] public bool hasBeenGrabbed;
 
     public float walkRadius = 10f;
@@ -18,7 +18,6 @@ public class PersonBehavior : MonoBehaviour
     public float walkFrequency = 6f;
 
     private float currentTime = 0f;
-
     private Quaternion rotationUp;
 
     [Header("Wiggling parameters")]
@@ -33,6 +32,8 @@ public class PersonBehavior : MonoBehaviour
     private float layDownTime = 2f;
 
     private bool standingUp;
+
+    public AudioSource AudioThump;
 
     // Use this for initialization
     private void Start()
@@ -146,6 +147,15 @@ public class PersonBehavior : MonoBehaviour
         if (other.gameObject.tag.Equals("TrainArea"))
         {
             isOnTrain = true;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (hasBeenGrabbed)
+        {
+            AudioThump.pitch = Random.Range(0.3f, 1.9f);
+            AudioThump.Play();
         }
     }
 

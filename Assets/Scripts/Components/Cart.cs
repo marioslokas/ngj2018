@@ -30,6 +30,7 @@ public class Cart : MonoBehaviour
             if (MyShape == Shapes.All || MyShape == pb.MyShape)
             {
                 pb.transform.SetParent(this.transform);
+                pb.isOnTrain = true;
                 return;
             }
 

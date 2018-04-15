@@ -7,6 +7,14 @@ public class ClawObject : MonoBehaviour
 {
     public Rigidbody ClawBody;
 
+    public AudioSource AudioClawOpen;
+    public AudioSource AudioClawClose;
+
+    public AudioSource AudioOpenLid;
+
+    public AudioClip[] AudioReactions;
+    public AudioSource AudioReaction;
+
     [HideInInspector] public bool IsGrabbing;
 
 	[SerializeField]
@@ -32,6 +40,7 @@ public class ClawObject : MonoBehaviour
         {
             if (Mathf.Abs(transform.position.y - m_DesiredHeight) < 0.35f)
             {
+                AudioClawClose.Play();
                 GatherPeople();
                 m_DesiredHeight = transform.parent.position.y;
                 IsGrabbing = false;
@@ -51,6 +60,8 @@ public class ClawObject : MonoBehaviour
                     return;
                 }
 
+                AudioClawOpen.Play();
+
                 m_DesiredHeight = transform.position.y - info.distance + 0.4f;
                 IsGrabbing = true;
             }
@@ -67,6 +78,8 @@ public class ClawObject : MonoBehaviour
             }
             else if (peopleHit[i].gameObject.CompareTag("TrainRoof"))
             {
+                AudioOpenLid.Play();
+
                 caughtOther.Add(peopleHit[i].gameObject);
 
                 Rigidbody body = peopleHit[i].GetComponent<Rigidbody>();
@@ -79,6 +92,12 @@ public class ClawObject : MonoBehaviour
 
 	void AttachPersonToCrane(Collider person)
     {
+        if (Random.Range(0, 5) == 4)
+        {
+            AudioReaction.clip = AudioReactions[Random.Range(0, AudioReactions.Length)];
+            AudioReaction.Play();
+        }
+
         person.transform.SetParent(this.transform);
 
         person.transform.position = Vector3.MoveTowards(person.transform.position, transform.position, 0.3f);
