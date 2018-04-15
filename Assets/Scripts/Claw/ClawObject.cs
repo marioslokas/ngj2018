@@ -22,8 +22,8 @@ public class ClawObject : MonoBehaviour
 
     [HideInInspector] public bool IsGrabbing;
 
-	[SerializeField]
-	private float grabbingRange = 5f;
+    [SerializeField]
+    private float grabbingRange = 5f;
 
     private float m_DesiredHeight = 0;
 
@@ -83,13 +83,13 @@ public class ClawObject : MonoBehaviour
 
     public void GatherPeople()
     {
-		Collider[] thingsHit = Physics.OverlapSphere(transform.position, grabbingRange, LayerMask.GetMask("People"));
+        Collider[] thingsHit = Physics.OverlapSphere(transform.position, grabbingRange, LayerMask.GetMask("People"));
 
-		for (int i = 0; i < thingsHit.Length; i++)
+        for (int i = 0; i < thingsHit.Length; i++)
         {
             if (thingsHit[i].CompareTag("Person"))
             {
-				AttachPersonToCrane(thingsHit[i].transform.parent);
+                AttachPersonToCrane(thingsHit[i].transform.parent);
             }
             else if (thingsHit[i].CompareTag("TrainRoof"))
             {
@@ -102,10 +102,10 @@ public class ClawObject : MonoBehaviour
 
                 caughtOther.Add(body);
             }
-		}
+        }
     }
 
-	private void AttachPersonToCrane(Transform person)
+    private void AttachPersonToCrane(Transform person)
     {
         if (Random.Range(0, 5) == 4)
         {
@@ -117,15 +117,16 @@ public class ClawObject : MonoBehaviour
 
         PersonBehavior pb = person.GetComponent<PersonBehavior>();
         pb.isOnCrane = true;
-		pb.hasBeenGrabbed = true;
+        pb.isOnTrain = false;
+        pb.hasBeenGrabbed = true;
         pb.agent.enabled = false;
-        
+
         pb.Body.isKinematic = true;
         pb.Body.useGravity = false;
         person.transform.SetParent(this.transform);
 
         caughtPeople.Add(pb);
-	}
+    }
 
     public void ReleasePeople()
     {
@@ -141,17 +142,16 @@ public class ClawObject : MonoBehaviour
             var pb = caughtPeople[i];
             pb.isOnCrane = false;
             pb.transform.SetParent(null);
-            
+
             pb.Body.isKinematic = false;
             pb.Body.useGravity = true;
             pb.Body.velocity = addedVelocity;
         }
         caughtPeople.Clear();
 
-
         for (int i = caughtOther.Count - 1; i >= 0; i--)
         {
-			var rb = caughtOther[i];
+            var rb = caughtOther[i];
             rb.transform.SetParent(null);
             rb.isKinematic = false;
             rb.useGravity = true;
