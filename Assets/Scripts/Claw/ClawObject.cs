@@ -49,7 +49,7 @@ public class ClawObject : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0))
         {
-			if (caughtPeople.Count > 0 || caughtOther.Count > 0)
+            if (caughtPeople.Count > 0 || caughtOther.Count > 0)
             {
                 ReleasePeople();
             }

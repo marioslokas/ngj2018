@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 1874756236}
   - component: {fileID: 1874756235}
   - component: {fileID: 1874756239}
+  - component: {fileID: 1874756240}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -248,6 +249,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 829734fd47983804b9727c5f6dccba72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1874756240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874756234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efe11a1e797cf14abc717f7d36d4e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetCamera: {fileID: 1874756237}
 --- !u!1001 &2099028521
 Prefab:
   m_ObjectHideFlags: 0
@@ -286,6 +299,26 @@ Prefab:
     - target: {fileID: 4867367788797458, guid: dfab74e9aaa9bb741a6182c2df523357, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23995251744026102, guid: dfab74e9aaa9bb741a6182c2df523357,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114853918286758960, guid: dfab74e9aaa9bb741a6182c2df523357,
+        type: 2}
+      propertyPath: Freq
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114853918286758960, guid: dfab74e9aaa9bb741a6182c2df523357,
+        type: 2}
+      propertyPath: Shakes
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114853918286758960, guid: dfab74e9aaa9bb741a6182c2df523357,
+        type: 2}
+      propertyPath: Scale
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfab74e9aaa9bb741a6182c2df523357, type: 2}

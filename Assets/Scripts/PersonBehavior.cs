@@ -7,7 +7,6 @@ public class PersonBehavior : MonoBehaviour
     [HideInInspector] public NavMeshAgent agent;
     public GameObject platform;
 
-    private bool isOnPlatform;
     [HideInInspector] public bool isOnCrane;
     internal bool isOnTrain;
     [HideInInspector] public bool hasBeenGrabbed;
@@ -47,7 +46,6 @@ public class PersonBehavior : MonoBehaviour
 
         startPos = transform.position;
         randomToPos();
-        isOnPlatform = true;
 
         rotationUp = new Quaternion(0, 1, 0, 0);
 
