@@ -608,6 +608,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dcb56cb58db5f403ea3d94de3c36f261, type: 3}
   - {fileID: 8300000, guid: 9e82833d1c1bc462ab1ee49df0713c2c, type: 3}
   - {fileID: 8300000, guid: d4a2a00afaa9c46729540e7ea66f6b0b, type: 3}
+  - {fileID: 8300000, guid: 6f16a962b544344e88e195b020e96c6f, type: 3}
   AudioReaction: {fileID: 82566841746954030}
   IsGrabbing: 0
   grabbingRange: 1.5
