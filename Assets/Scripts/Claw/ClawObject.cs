@@ -77,7 +77,7 @@ public class ClawObject : MonoBehaviour
         {
             if (thingsHit[i].CompareTag("Person"))
             {
-				AttachPersonToCrane(thingsHit[i].transform);
+				AttachPersonToCrane(thingsHit[i].transform.parent);
             }
             else if (thingsHit[i].CompareTag("TrainRoof"))
             {

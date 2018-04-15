@@ -26,11 +26,12 @@ public class Cart : MonoBehaviour
     {
         PersonBehavior pb;
 
-        if ((pb = other.GetComponent<PersonBehavior>()) != null)
+        if ((pb = other.GetComponentInParent<PersonBehavior>()) != null)
         {
             if (MyShape == Shapes.All || MyShape == pb.MyShape)
             {
                 pb.transform.SetParent(this.transform);
+                pb.Body.isKinematic = true;
                 pb.isOnTrain = true;
                 return;
             }
