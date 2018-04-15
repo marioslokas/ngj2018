@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 1850643912059872}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: -0.00000008940697}
   m_LocalPosition: {x: 0, y: 0, z: 0.02702}
-  m_LocalScale: {x: 0.25000003, y: 0.25000003, z: 0.2}
+  m_LocalScale: {x: 0.007, y: 0.007, z: 0.007}
   m_Children: []
   m_Father: {fileID: 4285696993330274}
   m_RootOrder: 4
@@ -954,7 +954,11 @@ MonoBehaviour:
   CartLength: 1
   spawnPoint: {fileID: 0}
   m_ShapeIndicator: {fileID: 212830120185168642}
-  m_ShapeIndicators: []
+  m_ShapeIndicators:
+  - {fileID: 21300000, guid: cd4f51b8781f7ca47a808d5db5c28c31, type: 3}
+  - {fileID: 21300000, guid: 543e9c7107811854982380a64e8aa13b, type: 3}
+  - {fileID: 21300000, guid: 5398689305b3e1d49b8f5843ae04af50, type: 3}
+  - {fileID: 21300000, guid: 25932e2da830506428cd367bfe8029c2, type: 3}
 --- !u!212 &212830120185168642
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -989,7 +993,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: cd4f51b8781f7ca47a808d5db5c28c31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -6,7 +6,5 @@ public class SnapshotTest : MonoBehaviour
     public AudioMixerSnapshot Slow;
     public AudioMixerSnapshot Fast;
 
-    bool isFast = false;
-
-    public float TransitionTiming = 2;
+    public const float TransitionTiming = 1;
 }

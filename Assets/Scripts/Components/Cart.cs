@@ -19,7 +19,7 @@ public class Cart : MonoBehaviour
     private void Start()
     {
         MyShape = (Shapes)Random.Range(1, 5);
-        m_ShapeIndicator.sprite = m_ShapeIndicators[(int)MyShape - 2];
+        m_ShapeIndicator.sprite = m_ShapeIndicators[(int)MyShape - 1];
     }
 
     private void OnTriggerEnter(Collider other)
