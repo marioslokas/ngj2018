@@ -9,7 +9,7 @@ public class PersonBehavior : MonoBehaviour
 
     private bool isOnPlatform;
     [HideInInspector] public bool isOnCrane;
-    private bool isOnTrain;
+    internal bool isOnTrain;
     [HideInInspector] public bool hasBeenGrabbed;
 
     public float walkRadius = 10f;
@@ -18,7 +18,6 @@ public class PersonBehavior : MonoBehaviour
     public float walkFrequency = 6f;
 
     private float currentTime = 0f;
-
     private Quaternion rotationUp;
 
     [Header("Wiggling parameters")]

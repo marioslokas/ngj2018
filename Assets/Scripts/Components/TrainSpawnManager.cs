@@ -11,7 +11,7 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private float trainHoldingTime;
 
     [SerializeField]
-	private Transform cartPrefab;
+    private Transform cartPrefab;
 
     [SerializeField]
     private Transform trainParentPrefab;
@@ -32,12 +32,14 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
     private Vector3 startNegDirection;
 
     private Text textTimerRef;
+    private Text textScoreRef;
     private string timeforDeparture;
     private string timeForArrivals = "Time for arrivals: ";
 
     internal bool StartedHolding;
     internal float TrainHoldingTimer;
     internal float BetweenTrainsTimer;
+    internal int Score;
 
     public void Init()
     {
@@ -45,7 +47,10 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
         TrainHoldingTimer = trainHoldingTime;
 
         Instantiate(eventSystemPrefab);
-        textTimerRef = Instantiate(canvasForUIPrefab).TimerText;
+        var canvasObj = Instantiate(canvasForUIPrefab);
+        textTimerRef = canvasObj.TimerText;
+        textScoreRef = canvasObj.ScoreText;
+
         timeforDeparture = textTimerRef.text;
         SpawnTrain(1, startPosDirection);
         SpawnTrain(-1, startNegDirection);
@@ -66,12 +71,14 @@ public class TrainSpawnManager : MonoBehaviourSingleton<TrainSpawnManager>, ISin
         var cartRef = Instantiate(cartPrefab, trainObj);
 
         cartRef.transform.localPosition = new Vector3(xDirection * -3.53f, 0, 0);
-//        cartRef.Init((Shapes)UnityEngine.Random.Range(1, 5));
+        //        cartRef.Init((Shapes)UnityEngine.Random.Range(1, 5));
     }
 
     private void Update()
     {
         BetweenTrainsTimer -= Time.deltaTime;
+
+        textScoreRef.text = "Score: " + Score;
 
         if (StartedHolding)
         {

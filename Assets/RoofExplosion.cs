@@ -16,6 +16,14 @@ public class RoofExplosion : MonoBehaviour
 
     private void OnDestroy()
     {
+        PersonBehavior person;
+
+        if ((person = GetComponent<PersonBehavior>()) != null && person.isOnTrain)
+        {
+            TrainSpawnManager.Instance.Score++;
+            return;
+        }
+
         if (!m_IsQuitting)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);

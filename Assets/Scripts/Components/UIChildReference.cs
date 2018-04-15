@@ -6,4 +6,7 @@ public class UIChildReference : MonoBehaviour
 {
     [SerializeField]
     internal UnityEngine.UI.Text TimerText;
+
+    [SerializeField]
+    internal UnityEngine.UI.Text ScoreText;
 }
