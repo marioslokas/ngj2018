@@ -26,7 +26,7 @@ public class RoofExplosion : MonoBehaviour
 
         if (!m_IsQuitting)
         {
-            CameraEffects.RandomShake(6, 0.02f, 0.11f);
+            CameraEffects.RandomShake(6, 0.06f, 0.15f);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
     }
