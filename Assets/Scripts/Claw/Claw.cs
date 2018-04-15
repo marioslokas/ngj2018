@@ -28,6 +28,8 @@ public class Claw : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class Claw : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             Cursor.lockState = (CursorLockMode)(((int)++Cursor.lockState) % 2);
+            Cursor.visible = ((int)++Cursor.lockState) % 2 == 1;
         }
         
         DoMove();
